@@ -10,9 +10,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">Navbar</a>
+              <a class="navbar-brand" href="#" id="button" onclick="toogle()"><img src="./src/Icons/menu.svg" alt=""></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -21,8 +21,6 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                   </li>
-                  
-                  
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       User
@@ -40,15 +38,28 @@
     </header>
     
     <div id="left_bar">
+      <img src="./src/Icons/logo.png" alt="logo" id="logo">
       <ul>
-        <img src="" alt="logoSistema">
-        <a href=""><li>Cad I</li></a>
-        <a href=""><li>Cad</li></a>
-        <a href=""><li>Mov</li></a>
-        <a href=""><li>Rel</li></a>
-        <a href=""><li>Config</li></a>
+        <a href="#"><li><img src="./src/Icons/cad_inicial.svg" alt="" title="Cadastros Iniciais" ></li></a>
+        <a href="#"><li><img src="./src/Icons/cadastros.svg" alt="" title="Cadastros"></li></a>
+        <a href="#"><li><img src="./src/Icons/moviment.svg" alt="" title="Movimentos"></li></a>
+        <a href="#"><li><img src="./src/Icons/report.svg" alt="" title="Relatorios"></li></a>
+        <a href="#"><li><img src="./src/Icons/config.svg" alt="" title="Configurações"></li></a>
       </ul>
 
+    </div>
+    <div id="extend_left_bar">
+      <img src="./src/Icons/logo.png" alt="logo" id="logo">
+      <ul>
+        <a href="#"><li><img src="./src/Icons/cad_inicial.svg" alt="" title="Cadastros Iniciais"></li></a>
+        <a href="#"><li><img src="./src/Icons/cadastros.svg" alt="" title="Cadastros"></li></a>
+        <a href="#"><li><img src="./src/Icons/moviment.svg" alt="" title="Movimentos"></li></a>
+        <a href="#"><li><img src="./src/Icons/report.svg" alt="" title="Relatorios"></li></a>
+        <a href="#"><li><img src="./src/Icons/config.svg" alt="" title="Configurações"></li></a>
+      </ul>
+    </div>
+    <div id="top_bar">
+      <p>Sistema de Gestao de Cemiterios</p>
     </div>
 
     <nav>
@@ -58,4 +69,6 @@
 
     </footer>
 </body>
+<script type="text/javascript" src="scripts.js"></script>
+
 </html>
