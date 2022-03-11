@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portifolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#" id="button" onclick="toogle()"><img src="./src/Icons/menu.svg" alt=""></a>
+              <a class="navbar-brand" href="#" id="button" onclick="toogle()"><img src="../src/Icons/menu.svg" alt=""></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -38,18 +38,18 @@
     </header>
     
     <div id="left_bar">
-      <img src="./src/Icons/logo.png" alt="logo" id="logo">
+      <img src="../src/Icons/logo.png" alt="logo" id="logo">
       <ul>
-        <a href="./pages/cad_Cemiterios.html"><li><img src="./src/Icons/cad_inicial.svg" alt="" title="Cadastros Iniciais" ></li></a>
-        <a href="#"><li><img src="./src/Icons/cadastros.svg" alt="" title="Cadastros"></li></a>
-        <a href="#"><li><img src="./src/Icons/moviment.svg" alt="" title="Movimentos"></li></a>
-        <a href="#"><li><img src="./src/Icons/report.svg" alt="" title="Relatorios"></li></a>
-        <a href="#"><li><img src="./src/Icons/config.svg" alt="" title="Configurações"></li></a>
+        <a href="#"><li><img src="../src/Icons/cad_inicial.svg" alt="" title="Cadastros Iniciais" ></li></a>
+        <a href="#"><li><img src="../src/Icons/cadastros.svg" alt="" title="Cadastros"></li></a>
+        <a href="#"><li><img src="../src/Icons/moviment.svg" alt="" title="Movimentos"></li></a>
+        <a href="#"><li><img src="../src/Icons/report.svg" alt="" title="Relatorios"></li></a>
+        <a href="#"><li><img src="../src/Icons/config.svg" alt="" title="Configurações"></li></a>
       </ul>
 
     </div>
     <div id="extend_left_bar">
-      <img src="./src/Icons/logo.png" alt="logo" id="logo">
+      <img src="../src/Icons/logo.png" alt="logo" id="logo">
       <ul>
         <a href="#"><li>Cad Iniciais</li></a>
         <a href="#"><li>Cadastros</li></a>
@@ -62,8 +62,48 @@
       <p>Sistema de Gestao de Cemiterios</p>
     </div>
 
-    <nav>
-        
+    <nav id="cadCemiterio">
+        <div id="top_options">
+        <p>Cadastro de Cemiterios</p>
+        <div id="top_Buttons">
+        <button type="button" class="btn btn-outline-dark">Filtrar</button>
+        <button type="button" class="btn btn-outline-dark">Novo</button>
+        <button type="button" class="btn btn-outline-dark">Fechar</button>
+    </div>
+    </div>
+     <div id="options"> 
+         <div>  
+        <label for="Codigo">Codigo: </label>
+        <input type="text" title="Codigo">
+    
+        <label for="">Nome: </label>
+        <input type="text" title="Nome">
+    </div>
+    <div>
+        <label for="">Endereco: </label>
+        <input type="text" title="Codigo">
+    
+        <label for="">Numero: </label>
+        <input type="number" title="Codigo">
+    </div>
+    <div>
+        <label for="">Bairro: </label>
+        <input type="text" title="Codigo">
+    
+        <label for="">Estado: </label>
+        <input type="text" title="Codigo">
+    </div>
+    <div>
+        <label for="">Telefone: </label>
+        <input type="text" title="Codigo">
+    
+        <label for="">Responsavel: </label>
+        <input type="text" title="Codigo">
+    </div>
+    </div>
+    <div id="result_Options">
+        <p>Resultados</p>
+    </div>
     </nav>
     <footer>
 

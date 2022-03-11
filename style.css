@@ -13,6 +13,7 @@ header{
     position: fixed;
     height: 100%;
     width: 60px;
+    z-index: 1;
 }
 
 #left_bar ul li{
@@ -48,14 +49,49 @@ header{
     height: 100%;
     width: 200px;
     display: none;
+    z-index: 0;
 }
 
 #extend_left_bar ul li{
     list-style: none;
-    padding: 25px 0 0 0;
+    padding: 35px 0 0 0;
+    padding-left: 70px;
     
 }
 #extend_left_bar ul {
      padding: 15px 0 0 5px;
+     
     
+}
+
+#cadCemiterio{
+    /* display: flex; */
+    display: inline;
+    position: fixed;
+    height: 60px;
+    
+    left: 30px;
+}
+#top_options{
+    display: flex;
+    
+    height: 60px;
+    width: 90vw;
+    left: 30px;
+}
+#top_Buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+#options{
+    display: flex;
+     flex-direction: column; 
+    position: relative;
+    align-items: center;
+    left: 30px;
+}
+#result_Options{
+    display: flex;
+
 }

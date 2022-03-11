@@ -6,7 +6,7 @@ extendleftBar.onclick = function() {
 }  */
 
 function toogle(){
-    if  (document.getElementById('extend_left_bar').style.display = 'none'){
+    if  (document.getElementById('extend_left_bar').style.display == 'none'){
         document.getElementById('extend_left_bar').style.display = 'block';
     }else
         document.getElementById('extend_left_bar').style.display = 'none'
