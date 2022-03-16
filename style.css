@@ -1,3 +1,6 @@
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 header{
     display: block;
     position: relative;
@@ -36,7 +39,7 @@ header{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-#top_bar p{
+#top_bar{
     padding: 10px 0;
 }
 .collapse navbar-collapse ul{
@@ -64,34 +67,45 @@ header{
     
 }
 
-#cadCemiterio{
-    /* display: flex; */
-    display: inline;
-    position: fixed;
-    height: 60px;
-    
-    left: 30px;
-}
-#top_options{
+#dados_Cemiterio{
+    /* padding: 2px 85px; */
     display: flex;
-    
-    height: 60px;
-    width: 90vw;
-    left: 30px;
+    /* flex-direction: column; */
+    position: relative;
+    left: 80px;
 }
+#top_Nav{
+    padding-top: 2vh;
+}
+#title_Page{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    left: 70px;
+    width: auto;
+}
+
 #top_Buttons{
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    position: absolute;
+    right: 5vw;
 }
-#options{
-    display: flex;
-     flex-direction: column; 
+#top_Buttons button{
+    margin: 0 05px;
+}
+#form_Cemiterio{
     position: relative;
-    align-items: center;
-    left: 30px;
+    left: 5vw;
 }
-#result_Options{
-    display: flex;
+#resultados{
+    padding-top: 10px;
+    position: relative;
+    left: 80px;
+    font-size: larger;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
-}
+
+
