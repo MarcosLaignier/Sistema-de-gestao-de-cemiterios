@@ -64,26 +64,16 @@
 
     <nav id="top_Nav">
         <div id="title_Page">
-        <p>Pesquisa de Cemiterios</p>
+        <p>Pesquisa de Falecidos</p>
         <div id="top_Buttons">
         <button type="button" class="btn btn-outline-dark">Filtrar</button>
-        <a href="./cad_Cemiterio.html"><button type="button" class="btn btn-outline-dark">Novo</button></a>
+        <a href="./cad_Falecido.html"><button type="button" class="btn btn-outline-dark">Novo</button></a>
         <a href="../index.html"><button type="button" class="btn btn-outline-dark">Fechar</button></a>
     
     </div>
       </div>
 
     <form id="form_Cemiterio">
-      
-      <div class="row mb-1">
-        <div class="col-md-2">
-          <div class="form-outline">
-            <label class="form-label" for="form6Example1">Codigo</label>
-            <input type="text" id="form6Example1" class="form-control" />
-            
-          </div>
-        </div>
-        
         </div>
         <div class="row mb-1">
           <div class="col-md-5">
@@ -95,30 +85,22 @@
           </div>
           </div>
       </div>
-      <div class="row mb-1">
-        <div class="col-md-5">
-          <div class="form-outline">
-            <label class="form-label" for="form6Example1">Responsavel</label>
-            <input type="text" id="form6Example1" class="form-control" />
-            
-          </div>
-        </div>
-
-      </div>
+      
       <div class="row mb-1">
         <div class="col-md-3">
           <div class="form-outline">
-            <label class="form-label" for="form6Example1">Cidade</label>
-            <input type="text" id="form6Example1" class="form-control" />
+            <label class="form-label" for="form6Example1">Nascimento</label>
+            <input type="date" id="form6Example1" class="form-control" />
             
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-outline">
-            <label class="form-label" for="inputEstado">Estado</label>
-          <select id="inputEstado" class="form-control">
+            <label class="form-label" for="inputSexo">Sexo</label>
+          <select id="inputSexo" class="form-control">
             <option selected>Escolher</option>
-            <option>MG</option>
+            <option>Masculino</option>
+            <option>Feminino</option>
           </select>
             
           </div>
@@ -134,31 +116,35 @@
           <th scope="col">#</th>
           <th scope="col">Codigo</th>
           <th scope="col">Nome</th>
-          <th scope="col">Endereco</th>
-          <th scope="col">Responsavel</th>
+          <th scope="col">CPF</th>
+          <th scope="col">Nascimento</th>
+          <th scope="col">Falecimento</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <th scope="row">1</th>
           <td>1</td>
-          <td>Cemiterio da Paz</td>
-          <td>Avenida 1 , bairro</td>
-          <td>Joao</td>
+          <td>Joao de Deus</td>
+          <td>000.000.000-09</td>
+          <td>00/00/0000</td>
+          <td>11/11/1111</td>
         </tr>
         <tr>
           <th scope="row">2</th>
           <td>2</td>
-          <td>Cemiterio PL</td>
-          <td>Avenida 2 , bairro</td>
-          <td>PMPL</td>
+          <td>Joao de Deus</td>
+          <td>000.000.000-09</td>
+          <td>00/00/0000</td>
+          <td>11/11/1111</td>
         </tr>
         <tr>
           <th scope="row">3</th>
           <td>3</td>
-          <td>Cemiterio da Esperanca</td>
-          <td>Avenida teste , bairro</td>
-          <td>Math</td>
+          <td>Joao de Deus</td>
+          <td>000.000.000-09</td>
+          <td>00/00/0000</td>
+          <td>11/11/1111</td>
         </tr>
       </tbody>
     </table>

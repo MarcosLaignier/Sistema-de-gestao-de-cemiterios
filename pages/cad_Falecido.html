@@ -19,7 +19,7 @@
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -64,11 +64,11 @@
 
     <nav id="top_Nav">
         <div id="title_Page">
-        <p>Pesquisa de Cemiterios</p>
+        <p>Cadastro de Falecidos</p>
         <div id="top_Buttons">
-        <button type="button" class="btn btn-outline-dark">Filtrar</button>
-        <a href="./cad_Cemiterio.html"><button type="button" class="btn btn-outline-dark">Novo</button></a>
-        <a href="../index.html"><button type="button" class="btn btn-outline-dark">Fechar</button></a>
+        <button type="button" class="btn btn-outline-dark">Salvar</button>
+        <button type="button" class="btn btn-outline-dark">Excluir</button>
+        <a href="./filter_Falecido.html"><button type="button" class="btn btn-outline-dark">Fechar</button></a>
     
     </div>
       </div>
@@ -79,89 +79,86 @@
         <div class="col-md-2">
           <div class="form-outline">
             <label class="form-label" for="form6Example1">Codigo</label>
-            <input type="text" id="form6Example1" class="form-control" />
+            <input type="text" id="form6Example1" class="form-control" disabled/>
             
           </div>
         </div>
         
         </div>
-        <div class="row mb-1">
-          <div class="col-md-5">
-            <div class="form-outline">
-              <label class="form-label" for="form6Example1">Nome</label>
-              <input type="text" id="form6Example1" class="form-control" />
-              
-            </div>
-          </div>
-          </div>
-      </div>
-      <div class="row mb-1">
-        <div class="col-md-5">
-          <div class="form-outline">
-            <label class="form-label" for="form6Example1">Responsavel</label>
-            <input type="text" id="form6Example1" class="form-control" />
-            
-          </div>
-        </div>
-
-      </div>
+        
       <div class="row mb-1">
         <div class="col-md-3">
           <div class="form-outline">
-            <label class="form-label" for="form6Example1">Cidade</label>
+            <label class="form-label" for="form6Example1">Nome</label>
             <input type="text" id="form6Example1" class="form-control" />
             
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-outline">
-            <label class="form-label" for="inputEstado">Estado</label>
-          <select id="inputEstado" class="form-control">
-            <option selected>Escolher</option>
-            <option>MG</option>
-          </select>
+            <label class="form-label" for="form6Example2">CPF</label>
+            <input type="text" id="form6Example2" class="form-control" />
             
           </div>
         </div>
       </div>
+      <div class="row mb-1">
+        <div class="col-md-3">
+          <div class="form-outline">
+            <label class="form-label" for="form6Example1">Sexo</label>
+            <select id="inputEstado" class="form-control">
+              <option selected>Escolher</option>
+              <option>Masculino</option>
+              <option>Feminino</option>
+            </select>
+            
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-outline">
+            <label class="form-label" for="inputEstado">Nascimento</label>
+            <input type="date" id="form6Example2" class="form-control" />
+
+            
+          </div>
+        </div>
+      </div>
+      <div class="row mb-1">
+        <div class="col-md-3">
+          <div class="form-outline">
+            <label class="form-label" for="form6Example1">Naturalidade</label>
+            <select id="inputEstado" class="form-control">
+              <option selected>Escolher</option>
+              <option>-</option>
+              <option>--</option>
+            </select>
+            
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-outline">
+            <label class="form-label" for="inputEstado">Falecimento</label>
+            <input type="date" id="form6Example2" class="form-control" />
+
+            
+          </div>
+        </div>
+      </div>
+      <div class="row mb-1">
+        <div class="col-md-5">
+          <div class="form-outline">
+            <label class="form-label" for="form6Example1">Medico Responsavel</label>
+            <input type="text" id="form6Example1" class="form-control" />
+            
+          </div>
+        </div>
+        </div>
+    </div>
       
     </form>
    
     
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Codigo</th>
-          <th scope="col">Nome</th>
-          <th scope="col">Endereco</th>
-          <th scope="col">Responsavel</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>1</td>
-          <td>Cemiterio da Paz</td>
-          <td>Avenida 1 , bairro</td>
-          <td>Joao</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>2</td>
-          <td>Cemiterio PL</td>
-          <td>Avenida 2 , bairro</td>
-          <td>PMPL</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>3</td>
-          <td>Cemiterio da Esperanca</td>
-          <td>Avenida teste , bairro</td>
-          <td>Math</td>
-        </tr>
-      </tbody>
-    </table>
+    
     </nav>
     <footer>
       
