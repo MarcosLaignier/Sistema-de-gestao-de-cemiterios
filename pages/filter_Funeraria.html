@@ -19,7 +19,7 @@
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -62,30 +62,30 @@
       <p>Sistema de Gestao de Cemiterios</p>
     </div>
 
-    <nav id="top_Nav">
+    <nav id="top_Nav">  
         <div id="title_Page">
-        <p>Cadastro de Sepulturas</p>
+        <p>Pesquisa de Funerarias</p>
         <div id="top_Buttons">
-        <button type="button" class="btn btn-outline-dark">Salvar</button>
-        <button type="button" class="btn btn-outline-dark">Excluir</button>
-        <a href="./filter_Sepultura.html"><button type="button" class="btn btn-outline-dark">Fechar</button></a>
+        <button type="button" class="btn btn-outline-dark">Filtrar</button>
+        <a href="./cad_Funeraria.html"><button type="button" class="btn btn-outline-dark">Novo</button></a>
+        <a href="../index.html"><button type="button" class="btn btn-outline-dark">Fechar</button></a>
     
     </div>
       </div>
 
     <form id="form_Cemiterio">
-      
-      <div class="row mb-1">
-        <div class="col-md-2">
-          <div class="form-outline">
-            <label class="form-label" for="form6Example1">Codigo</label>
-            <input type="text" id="form6Example1" class="form-control" disabled/>
-            
+        </div>
+        <div class="row mb-1">
+          <div class="col-md-2">
+            <div class="form-outline">
+              <label class="form-label" for="form6Example1">Codigo</label>
+              <input type="text" id="form6Example1" class="form-control" />
+              
+            </div>
           </div>
-        </div>
-        
-        </div>
-        
+          </div>
+      </div>
+      
       <div class="row mb-1">
         <div class="col-md-3">
           <div class="form-outline">
@@ -96,22 +96,55 @@
         </div>
         <div class="col-md-2">
           <div class="form-outline">
-            <label class="form-label" for="form6Example1">Cemiterio</label>
-            <select id="inputEstado" class="form-control">
-              <option selected>Escolher</option>
-              <option>Bosque</option>
-              <option>Esperanca</option>
-            </select>
+            <label class="form-label" for="inputSexo">Cidade</label>
+          <select id="inputSexo" class="form-control">
+            <option selected>Escolher</option>
+            <option>Lagoa Santa</option>
+            <option>Pedro Leopoldo</option>
+            <option>Vespasiano</option>
+          </select>
+            
+          </div>
         </div>
       </div>
       
-        
-        
-   
     </form>
    
     
-    
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Codigo</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Cemiterio</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>1</td>
+          <td>Funeraria M</td>
+          <td>Lagoa Santa</td>
+        
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>2</td>
+          <td>Funeraria AE</td>
+          <td>Pedro Leopoldo</td>
+         
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>3</td>
+          <td>Funeraria dois irmaos</td>
+          <td>Vespasiano</td>
+          
+        </tr>
+      </tbody>
+    </table>
     </nav>
     <footer>
       
