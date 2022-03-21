@@ -66,13 +66,18 @@
         <div id="title_Page">
         <p>Cadastro de Cemiterios</p>
         <div id="top_Buttons">
-        <button type="button" class="btn btn-outline-dark">Salvar</button>
+        <button type="button" class="btn btn-outline-dark" onclick=validaCadCemiterio()>Salvar</button>
         <button type="button" class="btn btn-outline-dark">Excluir</button>
         <a href="./filter_Cemiterio.html"><button type="button" class="btn btn-outline-dark">Fechar</button></a>
     
     </div>
       </div>
-
+      <div class="alert alert-danger" role="alert" id="alert_Form_Error">
+        Formulario Incompleto
+      </div>
+      <div class="alert alert-success" role="alert" id="alert_Form_Sucess">
+        Salvo com sucesso
+      </div>
     <form id="form_Cemiterio">
       
       <div class="row mb-1">
@@ -88,8 +93,8 @@
         <div class="row mb-1">
           <div class="col-md-5">
             <div class="form-outline">
-              <label class="form-label" for="form6Example1">Nome</label>
-              <input type="text" id="form6Example1" class="form-control" />
+              <label class="form-label" for="name_Cemiterio">Nome</label>
+              <input type="text" id="name_Cemiterio" class="form-control" />
               
             </div>
           </div>
@@ -98,15 +103,15 @@
       <div class="row mb-1">
         <div class="col-md-3">
           <div class="form-outline">
-            <label class="form-label" for="form6Example1">Endereço</label>
-            <input type="text" id="form6Example1" class="form-control" />
+            <label class="form-label" for="endereco_Cemiterio">Endereço</label>
+            <input type="text" id="endereco_Cemiterio" class="form-control" />
             
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-outline">
-            <label class="form-label" for="form6Example2">Numero</label>
-            <input type="text" id="form6Example2" class="form-control" />
+            <label class="form-label" for="number_Cemiterio">Numero</label>
+            <input type="text" id="number_Cemiterio" class="form-control" />
             
           </div>
         </div>
@@ -114,15 +119,15 @@
       <div class="row mb-1">
         <div class="col-md-3">
           <div class="form-outline">
-            <label class="form-label" for="form6Example1">Cidade</label>
-            <input type="text" id="form6Example1" class="form-control" />
+            <label class="form-label" for="city_cemiterio">Cidade</label>
+            <input type="text" id="city_Cemiterio" class="form-control" />
             
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-outline">
-            <label class="form-label" for="inputEstado">Estado</label>
-          <select id="inputEstado" class="form-control">
+            <label class="form-label" for="state_Cemiterio">Estado</label>
+          <select id="state_Cemiterio" class="form-control">
             <option selected>Escolher</option>
             <option>MG</option>
           </select>
@@ -133,8 +138,8 @@
       <div class="row mb-1">
         <div class="col-md-5">
           <div class="form-outline">
-            <label class="form-label" for="form6Example1">Responsavel</label>
-            <input type="text" id="form6Example1" class="form-control" />
+            <label class="form-label" for="responsavel_Cemiterio">Responsavel</label>
+            <input type="text" id="responsavel_Cemiterio" class="form-control" />
             
           </div>
         </div>
@@ -150,6 +155,6 @@
       
     </footer>
 </body>
-<script type="text/javascript" src="scripts.js"></script>
+<script type="text/javascript" src="../scripts.js"></script>
 
 </html>

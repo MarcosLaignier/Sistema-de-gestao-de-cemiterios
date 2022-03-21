@@ -106,7 +106,16 @@ header{
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
+#alert_Form_Error{
+    display: none;
+    left: 4vw;
+    width: 95.5vw;
+}
+#alert_Form_Sucess{
+    display: none;
+    left: 4vw;
+    width: 95.5vw;
+}
 
 /* .sub_menu{
     display:none;
