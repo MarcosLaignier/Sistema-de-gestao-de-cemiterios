@@ -66,14 +66,19 @@
         <div id="title_Page">
         <p>Cadastro de Sepulturas</p>
         <div id="top_Buttons">
-        <button type="button" class="btn btn-outline-dark">Salvar</button>
+        <button type="button" class="btn btn-outline-dark" onclick=validaCadSepultura()>Salvar</button>
         <button type="button" class="btn btn-outline-dark">Excluir</button>
         <a href="./filter_Sepultura.html"><button type="button" class="btn btn-outline-dark">Fechar</button></a>
     
     </div>
       </div>
-
-    <form id="form_Cemiterio">
+      <div class="alert alert-danger" role="alert" id="alert_Form_Error">
+        Formulario Incompleto
+      </div>
+      <div class="alert alert-success" role="alert" id="alert_Form_Sucess">
+        Salvo com sucesso
+      </div>
+    <form id="form_CSepultura" class="form_SGC">
       
       <div class="row mb-1">
         <div class="col-md-2">
@@ -89,15 +94,15 @@
       <div class="row mb-1">
         <div class="col-md-3">
           <div class="form-outline">
-            <label class="form-label" for="form6Example1">Nome</label>
-            <input type="text" id="form6Example1" class="form-control" />
+            <label class="form-label" for="name_Sepultura">Nome</label>
+            <input type="text" id="name_Sepultura" class="form-control" />
             
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-outline">
-            <label class="form-label" for="form6Example1">Cemiterio</label>
-            <select id="inputEstado" class="form-control">
+            <label class="form-label" for="name_Cemiterio">Cemiterio</label>
+            <select id="name_Cemiterio" class="form-control">
               <option selected>Escolher</option>
               <option>Bosque</option>
               <option>Esperanca</option>
@@ -117,6 +122,6 @@
       
     </footer>
 </body>
-<script type="text/javascript" src="scripts.js"></script>
+<script type="text/javascript" src="../scripts.js"></script>
 
 </html>
