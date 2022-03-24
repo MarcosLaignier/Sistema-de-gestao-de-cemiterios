@@ -122,23 +122,25 @@ function validaCadSepultamento() {
   }
 }
 
-function DadosCadCemiterio() {
+/* function DadosCadCemiterio() {
   var name_Cemiterio = document.getElementById("name_Cemiterio")
-  var name_Cemiterio = document.getElementById("endereco_Cemiterio")
-  var name_Cemiterio = document.getElementById("city_Cemiterio")
-  var name_Cemiterio = document.getElementById("state_Cemiterio")
-  var name_Cemiterio = document.getElementById("responsavel_Cemiterio")
+  var endereco_Cemiterio = document.getElementById("endereco_Cemiterio")
+  var city_Cemiterio = document.getElementById("city_Cemiterio")
+  var state_Cemiterio = document.getElementById("state_Cemiterio")
+  var responsavel_Cemiterio = document.getElementById("responsavel_Cemiterio")
 
-    
-  }
+  var DadosCemiterio = name_Cemiterio + endereco_Cemiterio + city_Cemiterio + state_Cemiterio + responsavel_Cemiterio
+  console.log(DadosCemiterio)
+    return DadosCemiterio
+  } */
 
   function DadosCadCemiterio2() {
 
-  var itens = document.getElementsByTagName('input');
-  for (i=0; i<itens.length; i++){ 
-    itens[i].getAttribute("alt") + ": " + itens[i].getAttribute("value");
+  var Dados = document.getElementsByTagName('input');
+  for (i=0; i<Dados.length; i++){ 
+    Dados[i].getAttribute("alt") + ": " + Dados[i].getAttribute("value");
+    console.log(Dados[i].id +' ' +  Dados[i].value)
     }
 
-    console.log(itens).value
   }
   
