@@ -1,16 +1,43 @@
-const express = require('express') /* Chamando o pacote do express */
-const connectDB = require('./db/database')
+
+import express from 'express'; /* Chamando o pacote do express */
+import querys from './querys/querys.js'; /* Chamando as querys */
+
 
 const app = express(); /* Colocando em uma variavel para poder utilizar futuramente */
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 
-app.get('/', function(req,res){
-    res.send('seja bem vindo')
-}) /* Criando a rota GET e colocando uma funcao de callback que RESponde algo */
 
-app.get('/sobre',function(req,res){
-    res.send('Pagina Sobre Voce')
-})
+app.get('/status', function(req,res){
+  res.status(200).send('Conexao estabelecida com o Banco')
+        
+    
+}) /* Criando a rota Status e colocando uma funcao de callback que Responde o status do banco */
+
+
+app.get('/',async function(req,res){
+  const busca_Unidades = await querys.findUnidades();
+  res.status(200).send(busca_Unidades)
+}) /* Criando uma rota que busca os dados de unidades do banco */
+
+
+
+app.post('/insert',async function(req,res){
+ /*  const{undnome , undresponsavel} = req.body;
+  const dados = await query.insereUnidades({undnome , undresponsavel})
+  
+  const insertUnd = await insereUnidades.insereUnidades(dados);
+  res.status(200).send('inserido'); */
+
+  const {undnome , undresponsavel} = req.body; 
+  
+  const insertUnd = await querys.insert_Unidades()
+  res.status(200).send(dados )
+  
+}) /* Criando uma rota que insere os dados de unidades do banco */
+
+
 
 app.listen(8081, function(){
     console.log('Servidor rodando na url http://localhost:8081')
