@@ -1,5 +1,8 @@
-module.exports = function unidades_Model(){
-    undnome:String;
-    undresponsavel:String;
+class modelo{
+    constructor(unidade){
+    unidade = {
+        undnome : {typeof:String}
+    }
 }
-
+}
+export default new modelo();

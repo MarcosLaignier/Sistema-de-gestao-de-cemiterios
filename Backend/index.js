@@ -4,8 +4,8 @@ import querys from './querys/querys.js'; /* Chamando as querys */
 
 
 const app = express(); /* Colocando em uma variavel para poder utilizar futuramente */
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 
 
@@ -23,17 +23,11 @@ app.get('/',async function(req,res){
 
 
 
-app.post('/insert',async function(req,res){
- /*  const{undnome , undresponsavel} = req.body;
-  const dados = await query.insereUnidades({undnome , undresponsavel})
-  
-  const insertUnd = await insereUnidades.insereUnidades(dados);
-  res.status(200).send('inserido'); */
-
-  const {undnome , undresponsavel} = req.body; 
-  
-  const insertUnd = await querys.insert_Unidades()
-  res.status(200).send(dados )
+app.post('/insert',async function(Request,res){
+  const teste =Request.body
+  console.log( teste)
+  const insertUnd = await querys.insert_Unidades(teste)
+  res.status(200).send(insertUnd )
   
 }) /* Criando uma rota que insere os dados de unidades do banco */
 

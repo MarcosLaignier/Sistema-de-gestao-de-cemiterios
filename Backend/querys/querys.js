@@ -1,5 +1,8 @@
 import conexaoDB from '../db/database.js';
 import express from 'express';
+import modelo from '../models/unidades.models.js'
+import Form from '../models/modelo.js';
+
 /* Criar classe para exportar */
 class querys{
 /* Criar funcao assincrona  */
@@ -10,13 +13,16 @@ class querys{
         return rows || []; /* Retornar a constante acima e se nao tiver nada, retornar vazio */
     }
 
-    async insert_Unidades(req){
-        const sql = `insert into SGCUNIDADES (undnome,undresponsavel) values ($1 , $2);`
-        const {undnome , undresponsavel} = req.body;
-        const dados = req.body.undnome
-        const dados2=req.body.undresponsavel
-        const values = [dados,dados2]
-        const rows = await conexaoDB.query(sql,values);
+    async insert_Unidades(Form){
+        const sql = `insert into SGCUNIDADES (undnome) values ($1);`
+        
+        /* const values = [Form.undnome]
+        const {rows} = await conexaoDB.query<{form: String}>(sql,values); */
+        const values = [Form.undnome]
+        return await conexaoDB.query(sql,values)
+        /* const [teste2] = rows */
+                
+        /* return [rows]; */
     }
 
 }
