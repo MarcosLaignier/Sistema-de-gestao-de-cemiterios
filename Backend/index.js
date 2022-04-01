@@ -1,9 +1,15 @@
 
 import express from 'express'; /* Chamando o pacote do express */
 import querys from './querys/querys.js'; /* Chamando as querys */
+import cors from 'cors';
 
 
 const app = express(); /* Colocando em uma variavel para poder utilizar futuramente */
+
+
+
+app.use(cors());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

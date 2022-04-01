@@ -5,6 +5,8 @@ extendleftBar.onclick = function() {
 }
 }  */
 
+
+
 function toogle() {
   if (document.getElementById("extend_left_bar").style.display == "none") {
     document.getElementById("extend_left_bar").style.display = "block";
@@ -134,7 +136,27 @@ function validaCadSepultamento() {
     console.log(recebeDados)
 
     }
+    
+  }
 
+  function sendCadCemiterio(){
+    var name = document.getElementById("name_Cemiterio").value
+    console.log(name)
+
+    const name2 = {undnome: name}
+    console.log(name2)
+    
+    fetch ('http://localhost:8081/insert',{
+      "method":"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify(name2)
+        
+      
+      
+    })
+   
   }
   
   
