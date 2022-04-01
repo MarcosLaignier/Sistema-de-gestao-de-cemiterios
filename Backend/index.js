@@ -23,11 +23,10 @@ app.get('/',async function(req,res){
 
 
 
-app.post('/insert',async function(Request,res){
-  const teste =Request.body
-  console.log( teste)
-  const insertUnd = await querys.insert_Unidades(teste)
-  res.status(200).send(insertUnd )
+app.post('/insert',async function(req,res){
+  const dados =req.body
+  await querys.insert_Unidades(dados)
+  res.status(200).send('Inserido com sucesso' )
   
 }) /* Criando uma rota que insere os dados de unidades do banco */
 

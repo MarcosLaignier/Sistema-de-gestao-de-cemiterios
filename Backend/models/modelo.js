@@ -1,6 +1,11 @@
 var Form = {
-   
-    undnome: String
+    
+    undnome: String,
+    undendereco:String,
+    undnumero:Number,
+    undcidade:String,
+    undestado:String,
+    undresponsavel:String
   
 }
 
