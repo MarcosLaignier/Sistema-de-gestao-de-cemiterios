@@ -140,24 +140,91 @@ function validaCadSepultamento() {
   }
 
   function sendCadCemiterio(){
-    var name = document.getElementById("name_Cemiterio").value
-    console.log(name)
+    const name = document.getElementById("name_Cemiterio").value
+    const endereco = document.getElementById("endereco_Cemiterio").value
+    const number = document.getElementById("number_Cemiterio").value
+    const city = document.getElementById("city_Cemiterio").value
+    const state = document.getElementById("state_Cemiterio").value
+    const resp = document.getElementById("responsavel_Cemiterio").value
 
-    const name2 = {undnome: name}
-    console.log(name2)
     
+    const consolidaDados = {
+      undnome: name,
+      undendereco:endereco,
+      undnumero:number,
+      undcidade:city,
+      undestado:state,
+      undresponsavel:resp}
+
     fetch ('http://localhost:8081/insert',{
       "method":"POST",
       headers:{
         "Content-Type":"application/json"
       },
-      body: JSON.stringify(name2)
-        
-      
+      body: JSON.stringify(consolidaDados)
       
     })
    
   }
+
+  function buscaCadCemiterio(){
+    
+     
+  fetch ('http://localhost:8081/').then(response =>{
+    return response.json();
+  }).then(data =>{
+     for (i=0; i<data.length; i++){ 
+      
+      recebeDados = data[i]
+
+      var table = document.getElementById('tbody')
+      var row = document.createElement("tr");
+    
+      /* for (td = 1; td <= 5; td++) { 
+     
+      var cell = document.createElement("td");
+      var cellText = document.createTextNode(data[i].);
+      
+
+        table.appendChild(row)
+        row.appendChild(cell)
+        cell.appendChild(cellText)
+      console.log(recebeDados)
+      }  */
+      console.log(recebeDados)
+      function createTD(){
+        var createTD = document.createElement("td");
+        return createTD
+      }
+      function createDados(){
+      table.appendChild(row)
+      row.appendChild(cell)
+      cell.appendChild(cellText)
+      }
+
+    var cell = createTD()
+    var cellText = document.createTextNode(data[i].undcodigo);
+    createDados()
+
+    var cell = createTD()
+    var cellText = document.createTextNode(data[i].undnome);
+    createDados()
+    var cell = createTD()
+    var cellText = document.createTextNode(data[i].undendereco);
+    createDados()
+    var cell = createTD()
+    var cellText = document.createTextNode(data[i].undnumero);
+    createDados()
+    var cell = createTD()
+    var cellText = document.createTextNode(data[i].undresponsavel);
+    createDados()
+
+      
+      
+      }
+     } 
+  ) }
+ 
   
   
 
