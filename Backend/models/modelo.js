@@ -1,5 +1,6 @@
 var Form = {
     
+    undcodigo:Number,
     undnome: String,
     undendereco:String,
     undnumero:Number,

@@ -125,6 +125,22 @@ function validaCadSepultamento() {
 }
 
 
+function validaForms() {
+  if (document.getElementsByClassName("form_I").value == null ) {
+    document.getElementById("alert_Form_Error").style.display = "block";
+    console.log(document.getElementsByClassName("form_I"))
+   } else
+  {
+    document.getElementById("alert_Form_Error").style.display = "none";
+    document.getElementById("alert_Form_Sucess").style.display = "block";
+    /* document.getElementById('form_CCemiterio').reset(); */
+    console.log(document.getElementsByClassName("form_I"))
+    
+    
+  }
+}
+
+
   function dadosInputs() {
 
   var Dados = document.getElementsByTagName('input');
@@ -169,7 +185,6 @@ function validaCadSepultamento() {
 
   function buscaCadCemiterio(){
     
-     
   fetch ('http://localhost:8081/').then(response =>{
     return response.json();
   }).then(data =>{
@@ -180,17 +195,6 @@ function validaCadSepultamento() {
       var table = document.getElementById('tbody')
       var row = document.createElement("tr");
     
-      /* for (td = 1; td <= 5; td++) { 
-     
-      var cell = document.createElement("td");
-      var cellText = document.createTextNode(data[i].);
-      
-
-        table.appendChild(row)
-        row.appendChild(cell)
-        cell.appendChild(cellText)
-      console.log(recebeDados)
-      }  */
       console.log(recebeDados)
       function createTD(){
         var createTD = document.createElement("td");
@@ -225,25 +229,68 @@ function validaCadSepultamento() {
      } 
   ) }
  
-  
-  
 
- /*  function validaInputs() {
+  function buscaCadCemiterioCod(req){
+    const cod = document.getElementById("cod_Cemiterio").value
 
-    var Dados = document.getElementsByTagName('input');
-    for (i=0; i<Dados.length; i++){ 
-      Dados[i].getAttribute("alt") + ": " + Dados[i].getAttribute("value");
-      if(Dados[i].value == ''){
-        document.getElementById("alert_Form_Error").style.display = "block";
-        
-      }else{
-        document.getElementById("alert_Form_Sucess").style.display = "block";
-        document.getElementById("alert_Form_Error").style.display = "none";
-        alert('false')
-      break
-      }
+    const consolidaDados ={
+      undcodigo:cod
     }
+    
+
+    fetch('http://localhost:8081/cod', {
+      method: 'POST',
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify(consolidaDados)
+      
+    }).then(response =>{
+      return response.json();
+    }).then(data =>{
+      for (i=0; i<data.length; i++){ 
+       recebeDados = data[i]
+
+       console.log(recebeDados)
+       createTable(data)
+      }})}
+ 
+  function createTable(data){
+
+    var table = document.getElementById('tbody')
+    var row = document.createElement("tr")
+    function createTD(){
+      var createTD = document.createElement("td");
+      return createTD
+    }
+    function createDados(){
+    table.appendChild(row)
+    row.appendChild(cell)
+    cell.appendChild(cellText)
+    }
+
+  var cell = createTD()
+  var cellText = document.createTextNode(data[i].undcodigo);
+  createDados()
+
+  var cell = createTD()
+  var cellText = document.createTextNode(data[i].undnome);
+  createDados()
+  var cell = createTD()
+  var cellText = document.createTextNode(data[i].undendereco);
+  createDados()
+  var cell = createTD()
+  var cellText = document.createTextNode(data[i].undnumero);
+  createDados()
+  var cell = createTD()
+  var cellText = document.createTextNode(data[i].undresponsavel);
+  createDados()
+  }
   
-    } */
+
+  function clearTable(){
+    
+  }
+
 
     

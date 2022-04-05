@@ -27,18 +27,18 @@ Criando tabela Falecidos
 CREATE TABLE
     SGCFALECIDOS
     (
-        FALCODIGO VARCHAR2(6),
-        FALNOME VARCHAR2(100),
-        FALCPF VARCHAR2(11),
-        FALSEXO VARCHAR2(10),
+        FALCODIGO VARCHAR(6),
+        FALNOME VARCHAR(100),
+        FALCPF VARCHAR(11),
+        FALSEXO VARCHAR(10),
         FALNASCIMENTO DATE,
-        FALNATURALIDADE VARCHAR2(30),
+        FALNATURALIDADE VARCHAR(30),
         FALFALECIMENTO DATE,
-        FALMEDRESP VARCHAR2(60),
+        FALMEDRESP VARCHAR(60),
     );
 
     
-
+insert into SGCFALECIDOS values ('1','Mortinho da silva','00000000000','Masculino','01-01-2000','Brasileiro','01-01-2020','Dr Joao 22')
      Criando tabelas Funerarias
 
     CREATE TABLE
