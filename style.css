@@ -94,9 +94,9 @@ header{
 #top_Buttons button{
     margin: 0 05px;
 }
-.form_SGC{
+.form_SGC , table{
     position: relative;
-    left: 5vw;
+    left: 70px;
 }
 #resultados{
     padding-top: 10px;
