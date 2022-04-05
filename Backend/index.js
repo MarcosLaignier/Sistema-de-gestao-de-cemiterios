@@ -42,8 +42,14 @@ app.post('/insert',async function(req,res){
 
 /* ------------------------------ROTA FALECIDOS------------------------------------------------ */
 app.get('/fal',async function(req,res){
-  const busca_Unidades = await querys_Falecidos.findFalecidos();
-  res.status(200).send(busca_Unidades)
+  const busca_Falecidos = await querys_Falecidos.findFalecidos();
+  res.status(200).send(busca_Falecidos)
+})
+
+app.post('/falnome',async function(req,res){
+  const falnome = req.body
+  const busca_Falecidos_Nome = await querys_Falecidos.findFalecidosNome(falnome);
+  res.status(200).send(busca_Falecidos_Nome)
 })
 
 app.post('/insertFal',async function(req,res){

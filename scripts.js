@@ -14,7 +14,7 @@ function toogle() {
 }
 
 
-/* Validacoes formularios */
+/* --------------------- Validacoes formularios ------------------------ */
 function validaCadCemiterio() {
   if (document.getElementById("name_Cemiterio").value == "") {
     document.getElementById("alert_Form_Error").style.display = "block";
@@ -154,7 +154,7 @@ function validaForms() {
     }
     
   }
-
+/* --------------------------------------------CADASTRO CEMITERIO ---------------------------------------------- */
   function sendCadCemiterio(){
     const name = document.getElementById("name_Cemiterio").value
     const endereco = document.getElementById("endereco_Cemiterio").value
@@ -255,6 +255,130 @@ function validaForms() {
        createTable(data)
       }})}
  
+/* --------------------------------------------CADASTRO FALECIDO ------------------------------------------------ */
+function sendCadFalecido(){
+  const nameF = document.getElementById("name_Falecido").value
+  const cpf = document.getElementById("cpf_Falecido").value
+  const sexoFal = document.getElementById("sexo_Falecido").value
+  const dateNasc = document.getElementById("nascimento_Falecido").value
+  const natFal = document.getElementById("naturalidade_Falecido").value
+  const dateFalecimento = document.getElementById("date_Falecimento").value
+  const respF = document.getElementById("medico_Falecido").value
+  
+  const consolidaDados = {
+    falnome: nameF,
+    falcpf:cpf,
+    falsexo:sexoFal,
+    falnascimento:dateNasc,
+    falnaturalidade:natFal,
+    falfalecimento:dateFalecimento,
+    falmedresp:respF
+  }
+
+
+  fetch ('http://localhost:8081/insertFal',{
+    "method":"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body: JSON.stringify(consolidaDados)
+    
+  })
+ 
+}
+
+function buscaCadFalecido(){
+    
+  fetch ('http://localhost:8081/fal').then(response =>{
+    return response.json();
+  }).then(data =>{
+     for (i=0; i<data.length; i++){ 
+      
+      recebeDados = data[i]
+      var table = document.getElementById('tbody')
+    var row = document.createElement("tr")
+    function createTD(){
+      var createTD = document.createElement("td");
+      return createTD
+    }
+    function createDados(){
+    table.appendChild(row)
+    row.appendChild(cell)
+    cell.appendChild(cellText)
+    }
+
+  var cell = createTD()
+  var cellText = document.createTextNode(data[i].falcodigo);
+  createDados()
+
+  var cell = createTD()
+  var cellText = document.createTextNode(data[i].falnome);
+  createDados()
+  var cell = createTD()
+  var cellText = document.createTextNode(data[i].falcpf);
+  createDados()
+  var cell = createTD()
+  var cellText = document.createTextNode(data[i].falnascimento);
+  createDados()
+  var cell = createTD()
+  var cellText = document.createTextNode(data[i].falfalecimento);
+  createDados()
+     }})}
+
+     function buscaCadFalNome(req){
+      const nomeFal = document.getElementById("name_Falecido").value
+  
+      const consolidaDados ={
+        falnome:nomeFal
+      }
+      
+  
+      fetch('http://localhost:8081/falnome', {
+        method: 'POST',
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify(consolidaDados)
+        
+      }).then(response =>{
+        return response.json();
+      }).then(data =>{
+        for (i=0; i<data.length; i++){ 
+         recebeDados = data[i]
+  
+         var table = document.getElementById('tbody')
+         var row = document.createElement("tr")
+         function createTD(){
+           var createTD = document.createElement("td");
+           return createTD
+         }
+         function createDados(){
+         table.appendChild(row)
+         row.appendChild(cell)
+         cell.appendChild(cellText)
+         }
+     
+       var cell = createTD()
+       var cellText = document.createTextNode(data[i].falcodigo);
+       createDados()
+     
+       var cell = createTD()
+       var cellText = document.createTextNode(data[i].falnome);
+       createDados()
+       var cell = createTD()
+       var cellText = document.createTextNode(data[i].falcpf);
+       createDados()
+       var cell = createTD()
+       var cellText = document.createTextNode(data[i].falnascimento);
+       createDados()
+       var cell = createTD()
+       var cellText = document.createTextNode(data[i].falfalecimento);
+       createDados()
+        }})}
+
+
+
+/* --------------------------------------------FUNC CRIA CEMITERIO ---------------------------------------------- */
   function createTable(data){
 
     var table = document.getElementById('tbody')
@@ -288,9 +412,9 @@ function validaForms() {
   }
   
 
-  function clearTable(){
-    
-  }
+/*   function clearTable(){
+    document.getElementById('tbody').remove();
+  } */
 
 
     
