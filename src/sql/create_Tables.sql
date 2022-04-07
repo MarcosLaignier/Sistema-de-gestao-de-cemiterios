@@ -16,12 +16,13 @@ Criando tabelas Sepulturas
     CREATE TABLE
     SGCSEPULTURAS
     (
-        SEPCODIGO VARCHAR2(20),
-        SEPDESCRICAO VARCHAR2(100),
-        SEPCEMITERIO VARCHAR2(100),
+        SEPCODIGO VARCHAR(20),
+        SEPDESCRICAO VARCHAR(100),
+        SEPCEMITERIO VARCHAR(100)
         
     );
 
+insert into SGCSEPULTURAS values ('1','Sepultura 01.01 XG', 'Cemiterio do Murtao')
 Criando tabela Falecidos
 
 CREATE TABLE
@@ -44,13 +45,15 @@ insert into SGCFALECIDOS values ('1','Mortinho da silva','00000000000','Masculin
     CREATE TABLE
     SGCFUNERARIAS
     (
-        FUNCODIGO VARCHAR2(20),
-        FUNDESCRICAO VARCHAR2(100),
-        FUNCIDADE VARCHAR2(100),
-        FUNENDERECO VARCHAR2(100),
+        FUNCODIGO VARCHAR(220),
+        FUNDESCRICAO VARCHAR(100),
+        FUNCIDADE VARCHAR(100),
+        FUNENDERECO VARCHAR(100),
         FUNNUMERO INTEGER
         
     );
+
+    insert into SGCFUNERARIAS VALUES ('1','FUNERARIA DOIS IRMAOS', 'PEDRO LEOPOLDO', 'RUA DIAMANTE', '77')
 
     Criando Tabela Sepultamentos
 
