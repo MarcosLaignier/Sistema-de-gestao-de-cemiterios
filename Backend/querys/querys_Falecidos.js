@@ -12,7 +12,8 @@ class querysFalecidos{
     }
 
     async findFalecidosNome(modelFal){
-        const sql = `select * from SGCFALECIDOS where falnome like ($1);` 
+        const sql = `select * from SGCFALECIDOS where falnome ilike '%' || $1 || '%';`
+
         const values = [modelFal.falnome]
         const result = await conexaoDB.query(sql,values);  
         const rows = result.rows; 

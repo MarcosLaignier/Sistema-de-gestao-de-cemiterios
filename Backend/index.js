@@ -4,7 +4,7 @@ import querys_Falecidos from './querys/querys_Falecidos.js';
 import querys_Funerarias from './querys/querys_Funerarias.js';
 import cors from 'cors';
 import querys_Sepulturas from './querys/querys_Sepulturas.js';
-
+import querys_Sepultamentos from './querys/querys_Sepultamentos.js';
 
 const app = express(); /* Colocando em uma variavel para poder utilizar futuramente */
 
@@ -28,6 +28,11 @@ app.get('/',async function(req,res){
   const busca_Unidades = await querys_Cemiterio.findUnidades();
   res.status(200).send(busca_Unidades)
 }) /* Criando uma rota que busca os dados de unidades do banco */
+
+app.get('/popNameUnd',async function(req,res){
+  const busca_Unidades = await querys_Cemiterio.findNameUnidades();
+  res.status(200).send(busca_Unidades)
+}) 
 
 app.post('/cod',async function(req,res){
   const undcodigo = req.body
@@ -82,9 +87,14 @@ app.post('/insertSep',async function(req,res){
 
 /* ------------------------------ROTA FUNERARIAS------------------------------------------------ */
 app.get('/fun',async function(req,res){
-  const busca_Falecidos = await querys_Funerarias.findFunerarias();
-  res.status(200).send(busca_Falecidos)
+  const busca_Fun = await querys_Funerarias.findFunerarias();
+  res.status(200).send(busca_Fun)
 })
+
+app.get('/popNameFun',async function(req,res){
+  const busca_Funerarias = await querys_Funerarias.findFunerariasNome();
+  res.status(200).send(busca_Funerarias)
+}) 
 
 app.post('/funCod',async function(req,res){
   const funCod = req.body
@@ -100,8 +110,18 @@ app.post('/insertFun',async function(req,res){
 })
 
 /* ------------------------------ROTA SEPULTAMENTO---------------------------------------------- */
+app.get('/sepul',async function(req,res){
+  const busca_sepultamentos = await querys_Sepultamentos.findSepultamentos();
+  res.status(200).send(busca_sepultamentos)
+})
 
 
+app.post('/insertSepul',async function(req,res){
+  const dados =req.body
+  await querys_Sepultamentos.insert_Sepultamentos(dados)
+  res.status(200).send('Inserido com sucesso' )
+  
+})
 /* -------------------------------------------------------------------------------------------- */
 app.listen(8081, function(){
     console.log('Servidor rodando na url http://localhost:8081')

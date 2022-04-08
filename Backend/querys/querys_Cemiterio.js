@@ -28,6 +28,14 @@ class querysCemiterio{
         
     }
 
+    async findNameUnidades(){
+        const sql = `select undnome from SGCUNIDADES;` /* Colocar a query sql */
+        const result = await conexaoDB.query(sql);  /* Criar uma constante que recebe os dados da query acima */
+        const rows = result.rows; /* Criar uma constante que pega as Linhas do resultado */
+        return rows || []; /* Retornar a constante acima e se nao tiver nada, retornar vazio */
+    }
+
 }
 
 export default new querysCemiterio();
+

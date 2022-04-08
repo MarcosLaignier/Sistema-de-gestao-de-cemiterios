@@ -11,6 +11,13 @@ class querysFunerarias{
         return rows || []; 
     }
 
+    async findFunerariasNome(){
+        const sql = `select fundescricao from SGCFUNERARIAS;` 
+        const result = await conexaoDB.query(sql);  
+        const rows = result.rows;
+        return rows || []; 
+    }
+
     async findFunerariasCod(modelFun){
         const sql = `select * from SGCFUNERARIAS where funcodigo = ($1);` 
         const values = [modelFun.funcodigo]

@@ -226,7 +226,7 @@ function buscaCadCemiterio() {
 }
 
 
-function buscaCadCemiterioCod(req) {
+function buscaCadCemiterioCod (req) {
   const cod = document.getElementById("cod_Cemiterio").value
 
   const consolidaDados = {
@@ -252,6 +252,26 @@ function buscaCadCemiterioCod(req) {
     }
   })
 }
+
+
+function populaNomeCemiterio() {
+
+  fetch('http://localhost:8081/popNameUnd').then(response => {
+    return response.json();
+  }).then(data => {
+    for (i = 0; i < data.length; i++) {
+
+      recebeDados = data[i]
+      var select = document.getElementById('name_Cemiterio')
+      var option = document.createElement('option');
+      var textOpt = document.createTextNode(data[i].undnome);
+      select.appendChild(option)
+      option.appendChild(textOpt)
+    }
+})
+
+}
+
 
 /* --------------------------------------------CADASTRO FALECIDO ------------------------------------------------ */
 function sendCadFalecido() {
@@ -378,6 +398,57 @@ function buscaCadFalNome(req) {
     }
   })
 }
+function limpaCampo(campo){
+  if (campo.value != ""){
+       campo.value = '';
+  }
+}
+
+
+function populaCadFalNome(req) {
+  const nomeFale = document.getElementById("name_Pessoa").value
+
+  const consolidaDados = {
+    falnome: nomeFale
+  }
+  if (document.getElementById("name_fal").style.display == "none") {
+    document.getElementById("name_fal").style.display = "block";
+  } else {document.getElementById("name_fal").style.display = "none";}
+
+
+  fetch('http://localhost:8081/falnome', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(consolidaDados)
+
+  }).then(response => {
+    return response.json();
+  }).then(data => {
+    for (let i in data) {
+      recebeDados = data[i]
+
+      var list = document.getElementById('name_fal')
+      var optList = document.createElement("li")
+      var textList = document.createTextNode(data[i].falnome)
+      console.log(data[i].falnome)
+      list.appendChild(optList)
+      optList.appendChild(textList)
+      
+      optList.onclick = () =>{
+        document.getElementById('name_Pessoa').value = (data[i].falnome)
+        document.getElementById('cpf_Pessoa').value = (data[i].falcpf)
+        document.getElementById('date_Falecimento').value = (data[i].falfalecimento)
+        document.getElementById("name_fal").style.display = "none";
+        var itens = document.getElementById('name_fal').detach();
+      }
+      
+    
+
+    }
+  })
+}
 /* --------------------------------------------CADASTRO FUNERARIAS ------------------------------------------------ */
 function sendCadFunerarias() {
   const nameFun = document.getElementById("name_Funeraria").value
@@ -486,6 +557,25 @@ function buscaCadFunCod(req) {
      
     }
   })
+}
+
+
+function populaNomeFunerarias() {
+
+  fetch('http://localhost:8081/popNameFun').then(response => {
+    return response.json();
+  }).then(data => {
+    for (i = 0; i < data.length; i++) {
+
+      recebeDados = data[i]
+      var select = document.getElementById('name_Funeraria')
+      var option = document.createElement('option');
+      var textOpt = document.createTextNode(data[i].fundescricao);
+      select.appendChild(option)
+      option.appendChild(textOpt)
+    }
+})
+
 }
 
 /* --------------------------------------------CADASTRO SEPULTURAS ------------------------------------------------ */
@@ -638,3 +728,27 @@ function createTable(data) {
   } */
 
 
+
+  clicado = false;
+      function buscaEstados() {
+        
+        if (clicado == false) {
+
+        fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados/').then(response => {
+          return response.json();
+        }).then(data => {
+          for (i = 0; i < data.length; i++) {
+      
+            
+            var select = document.getElementById('state_Cemiterio')
+            var option = document.createElement('option');
+            var textOpt = document.createTextNode(data[i].sigla);
+            select.appendChild(option)
+            option.appendChild(textOpt)
+            
+          }
+          clicado = true
+          
+      })
+    }
+      }
