@@ -1,18 +1,45 @@
-/* var extendleftBar = document.getElementById('button');
-extendleftBar.onclick = function() {
-    if  (document.getElementById('extend_left_bar').style.display = 'block'){
-    document.getElementById('extend_left_bar').style.display = 'none';
+let btn = document.querySelector('#btn')
+let leftBar = document.querySelector('.leftBar')
+let leftMenu = document.querySelector('.left_Menu')
+let subMenu = document.querySelector('.subMenu')
+
+btn.onclick = function(){
+    leftBar.classList.toggle("active")
 }
-}  */
 
+function openCadInicial(){
+  let subMenuCadInicial = document.getElementById('subMenuCadInicial')
+  if(subMenuCadInicial.style.display == 'none'){
+  document.getElementById('subMenuCadInicial').style.display = 'block'
+}else{
+  document.getElementById('subMenuCadInicial').style.display = 'none'
+}
+}
 
+function openCad(){
+  let subMenuCad = document.getElementById('subMenuCad')
+  if(subMenuCad.style.display == 'none'){
+  document.getElementById('subMenuCad').style.display = 'block'
+}else{
+  document.getElementById('subMenuCad').style.display = 'none'
+}
+}
 
-function toogle() {
+function openMov(){
+  let subMenuMov = document.getElementById('subMenuMov')
+  if(subMenuMov.style.display == 'none'){
+  document.getElementById('subMenuMov').style.display = 'block'
+}else{
+  document.getElementById('subMenuMov').style.display = 'none'
+}
+}
+
+/* function toogle() {
   if (document.getElementById("extend_left_bar").style.display == "none") {
     document.getElementById("extend_left_bar").style.display = "block";
   } else document.getElementById("extend_left_bar").style.display = "none";
 }
-
+ */
 
 /* --------------------- Validacoes formularios ------------------------ */
 function validaCadCemiterio() {
@@ -698,3 +725,6 @@ function populaCodCemiterio() {
           document.getElementById("cod_Sepultamento").value = populaCod
         }
         )}
+
+
+        

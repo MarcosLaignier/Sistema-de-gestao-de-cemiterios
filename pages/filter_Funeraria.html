@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#" id="button" onclick="toogle()"><img src="../src/Icons/menu.svg" alt=""></a>
+              <a class="navbar-brand" href="#" id="btn" onclick="toogle()"><img src="../src/Icons/menu.svg" alt=""></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -37,27 +37,82 @@
           </nav>
     </header>
     
-    <div id="left_bar">
-      <img src="../src/Icons/logo.png" alt="logo" id="logo">
+    <div class="leftBar">
       <ul>
-        <a href="#"><li><img src="../src/Icons/cad_inicial.svg" alt="" title="Cadastros Iniciais" ></li></a>
-        <a href="#"><li><img src="../src/Icons/cadastros.svg" alt="" title="Cadastros"></li></a>
-        <a href="#"><li><img src="../src/Icons/moviment.svg" alt="" title="Movimentos"></li></a>
-        <a href="#"><li><img src="../src/Icons/report.svg" alt="" title="Relatorios"></li></a>
-        <a href="#"><li><img src="../src/Icons/config.svg" alt="" title="Configurações"></li></a>
+        <li>
+          <a class="left_Menu" onclick="openCadInicial()">
+            <i> <img src="../src/Icons/cad_inicial.svg" alt=""></i>
+            <span>Cadastros Iniciais</span>
+          </a>
+          <ul class="subMenu" id="subMenuCadInicial">
+            <li>
+              <a href="../pages/filter_Cemiterio.html">
+                <span>Cemiterio</span>
+              </a>
+            </li>
+            <li>
+              <a href="../pages/filter_Sepultura.html">
+                <span>Sepulturas</span>
+              </a>
+            </li>
+            <li>
+              <a href="../pages/filter_Funeraria.html">
+                <span>Funerarias</span>
+              </a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <a class="left_Menu" onclick="openCad()">
+                <i> <img src="../src/Icons/cadastros.svg" alt=""></i>
+                <span class="links_name">Cadastros</span>
+              </a>
+            </li>
+            <ul class="subMenu" id="subMenuCad">
+              <li>
+                <a href="../pages/filter_Falecido.html">
+                  <span>Falecidos</span>
+                </a>
+              </li>
+  
+            </ul>
+          </ul>
+          <ul>
+            <li>
+              <a class="left_Menu" onclick="openMov()">
+                <i> <img src="../src/Icons/moviment.svg" alt=""></i>
+                <span class="links_name">Movimentaçoes</span>
+              </a>
+            </li>
+            <ul class="subMenu" id="subMenuMov">
+              <li>
+                <a href="../pages/filter_Sepultamento.html">
+                  <span>Sepultamento</span>
+                </a>
+              </li>
+  
+            </ul>
+          </ul>
+          <ul>
+            <li>
+              <a href="">
+                <i> <img src="../src/Icons/report.svg" alt=""></i>
+                <span class="links_name">Relatorios</span>
+              </a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <a href="">
+                <i> <img src="../src/Icons/config.svg" alt=""></i>
+                <span class="links_name">Configuraçoes</span>
+              </a>
+            </li>
+          </ul>
+        </li>
       </ul>
+    </div>
 
-    </div>
-    <div id="extend_left_bar">
-      <img src="../src/Icons/logo.png" alt="logo" id="logo">
-      <ul>
-        <a href="#"><li>Cad Iniciais</li></a>
-        <a href="#"><li>Cadastros</li></a>
-        <a href="#"><li>Movimentos</li></a>
-        <a href="#"><li>Relatorios</li></a>
-        <a href="#"><li>Configurações</li></a>
-      </ul>
-    </div>
     <div id="top_bar">
       <p>Sistema de Gestao de Cemiterios</p>
     </div>
