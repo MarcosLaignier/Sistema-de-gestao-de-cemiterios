@@ -13,9 +13,9 @@ class querysSepultamento{
 
 
     async insert_Sepultamentos(sepultaModel){
-        const sql = `insert into SGCSEPULTAMENTOS (sepulfalecido,sepulcpffal,sepulfuneraria,sepulcemiterio,sepulsepultura,sepdatasepultamento,sepdatafalecimento) 
-        values ($1 , $2, $3, $4, $5, $6, $7);`
-        const values = [sepultaModel.sepulfalecido, sepultaModel.sepulcpffal, sepultaModel.sepulfuneraria, sepultaModel.sepulcemiterio, sepultaModel.sepulsepultura, sepultaModel.sepdatasepultamento, sepultaModel.sepdatafalecimento] 
+        const sql = `insert into SGCSEPULTAMENTOS (sepulcodigo,sepulfalecido,sepulcpffal,sepulfuneraria,sepulcemiterio,sepulsepultura,sepdatasepultamento,sepdatafalecimento) 
+        values ($1 , $2, $3, $4, $5, $6, $7, $8);`
+        const values = [sepultaModel.sepulcodigo,sepultaModel.sepulfalecido, sepultaModel.sepulcpffal, sepultaModel.sepulfuneraria, sepultaModel.sepulcemiterio, sepultaModel.sepulsepultura, sepultaModel.sepdatasepultamento, sepultaModel.sepdatafalecimento] 
         return await conexaoDB.query(sql,values)
     }
     /* async findSepulturaCod(modelSep){

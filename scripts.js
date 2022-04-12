@@ -337,12 +337,14 @@ function populaCadFalNome(req) {
 }
 /* --------------------------------------------CADASTRO FUNERARIAS ------------------------------------------------ */
 function sendCadFunerarias() {
+  const codFun= document.getElementById("cod_Funeraria").value
   const nameFun = document.getElementById("name_Funeraria").value
   const cidadeFun = document.getElementById("city_Funeraria").value
   const endFun = document.getElementById("endereco_Funeraria").value
   const numFun = document.getElementById("number_Funeraria").value
 
   const consolidaDados = {
+    funcodigo:codFun,
     fundescricao: nameFun,
     funcidade: cidadeFun,
     funendereco: endFun,
@@ -421,11 +423,13 @@ function populaNomeFunerarias() {
 
 /* --------------------------------------------CADASTRO SEPULTURAS ------------------------------------------------ */
 function sendCadSepulturas() {
+  const codSep = document.getElementById("cod_Sepultura").value
   const descSep = document.getElementById("desc_Sepultura").value
   const nameCem = document.getElementById("name_Cemiterio").value
 
 
   const consolidaDados = {
+    sepcodigo:codSep,
     sepdescricao: descSep,
     sepcemiterio: nameCem,
 
@@ -485,6 +489,7 @@ function buscaCadSepCod(req) {
 }
 /* --------------------------------------------CADASTRO SEPULTAMENTO ---------------------------------------------- */
 function sendCadSepultamento() {
+  const codSepul = document.getElementById("cod_Sepultamento").value
   const nomeFal = document.getElementById("name_Pessoa").value
   const cpfFal = document.getElementById("cpf_Pessoa").value
   const nomeFun = document.getElementById("name_Funeraria").value
@@ -494,6 +499,7 @@ function sendCadSepultamento() {
   const nomeSep = document.getElementById("name_Sepultura").value
 
   const consolidaDados = {
+    sepulcodigo:codSepul,
     sepulfalecido: nomeFal,
     sepulcpffal: cpfFal,
     sepulfuneraria: nomeFun,
@@ -620,7 +626,7 @@ function dadosTable(d1, d2, d3, d4, d5) {
 
 }
 
-/* ------------------------------FUNC TESTE COD ------------------------------ */
+/* ------------------------------FUNC POPULA COD ------------------------------ */
 
 function populaCodCemiterio() {
 
@@ -649,3 +655,46 @@ function populaCodCemiterio() {
     }
     )}
   
+
+    function populaCodsepulturas() {
+
+
+      fetch ('http://localhost:8081/populaCodigoSep').then(response =>{
+        return response.json();
+      }).then(data =>{ 
+          recebeCodUnidade = data[0].sepcodigo
+          populaCod = recebeCodUnidade + 1
+          console.log(populaCod)
+    
+        document.getElementById("cod_Sepultura").value = populaCod
+      }
+      )}
+
+      function populaCodFunerarias() {
+
+
+        fetch ('http://localhost:8081/populaCodigoFun').then(response =>{
+          return response.json();
+        }).then(data =>{ 
+            recebeCodUnidade = data[0].funcodigo
+            populaCod = recebeCodUnidade + 1
+            console.log(populaCod)
+      
+          document.getElementById("cod_Funeraria").value = populaCod
+        }
+        )}
+
+        
+      function populaCodSepultamentos() {
+
+
+        fetch ('http://localhost:8081/populaCodigoSepul').then(response =>{
+          return response.json();
+        }).then(data =>{ 
+            recebeCodUnidade = data[0].sepulcodigo
+            populaCod = recebeCodUnidade + 1
+            console.log(populaCod)
+      
+          document.getElementById("cod_Sepultamento").value = populaCod
+        }
+        )}

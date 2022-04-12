@@ -1,6 +1,6 @@
 var modelFun = {
 
-    funcodigo:String ,
+    funcodigo:Number ,
 	fundescricao: String,
 	funcidade: String,
 	funendereco: String,

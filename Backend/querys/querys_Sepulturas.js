@@ -21,9 +21,9 @@ class querysSepulturas{
 
 
     async insert_Sepulturas(modelSep){
-        const sql = `insert into SGCSEPULTURAS (sepdescricao,sepcemiterio) 
-        values ($1 , $2);`
-        const values = [modelSep.sepdescricao, modelSep.sepcemiterio] 
+        const sql = `insert into SGCSEPULTURAS (sepCodigo,sepdescricao,sepcemiterio) 
+        values ($1 , $2, $3);`
+        const values = [modelSep.sepcodigo ,modelSep.sepdescricao, modelSep.sepcemiterio] 
         return await conexaoDB.query(sql,values)
         
     }

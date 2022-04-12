@@ -28,9 +28,9 @@ class querysFunerarias{
 
 
     async insert_Funerarias(modelFun){
-        const sql = `insert into SGCFUNERARIAS (fundescricao,funcidade,funendereco,funnumero) 
-        values ($1 , $2, $3, $4);`
-        const values = [modelFun.fundescricao , modelFun.funcidade , modelFun.funendereco,modelFun.funnumero] 
+        const sql = `insert into SGCFUNERARIAS (funcodigo,fundescricao,funcidade,funendereco,funnumero) 
+        values ($1 , $2, $3, $4, $5);`
+        const values = [modelFun.funcodigo, modelFun.fundescricao , modelFun.funcidade , modelFun.funendereco,modelFun.funnumero] 
         return await conexaoDB.query(sql,values)
         
     }

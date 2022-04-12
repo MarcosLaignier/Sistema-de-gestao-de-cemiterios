@@ -1,6 +1,6 @@
 var modelSep = {
 
-    sepcodigo:String ,
+    sepcodigo:Number ,
 	sepdescricao: String,
 	sepcemiterio: String,
 	

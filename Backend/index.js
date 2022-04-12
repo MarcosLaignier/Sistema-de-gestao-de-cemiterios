@@ -95,6 +95,11 @@ app.post('/insertSep',async function(req,res){
   
 })
 
+app.get('/populaCodigoSep',async function(req,res){
+  const pop_Cod = await querys_Codigos.codSepulturas();
+  res.status(200).send(pop_Cod)
+}) 
+
 /* ------------------------------ROTA FUNERARIAS------------------------------------------------ */
 app.get('/fun',async function(req,res){
   const busca_Fun = await querys_Funerarias.findFunerarias();
@@ -119,6 +124,11 @@ app.post('/insertFun',async function(req,res){
   
 })
 
+app.get('/populaCodigoFun',async function(req,res){
+  const pop_Cod = await querys_Codigos.codFunerarias();
+  res.status(200).send(pop_Cod)
+}) 
+
 /* ------------------------------ROTA SEPULTAMENTO---------------------------------------------- */
 app.get('/sepul',async function(req,res){
   const busca_sepultamentos = await querys_Sepultamentos.findSepultamentos();
@@ -132,6 +142,11 @@ app.post('/insertSepul',async function(req,res){
   res.status(200).send('Inserido com sucesso' )
   
 })
+
+app.get('/populaCodigoSepul',async function(req,res){
+  const pop_Cod = await querys_Codigos.codSepultamentos();
+  res.status(200).send(pop_Cod)
+}) 
 /* -------------------------------------------------------------------------------------------- */
 app.listen(8081, function(){
     console.log('Servidor rodando na url http://localhost:8081')
