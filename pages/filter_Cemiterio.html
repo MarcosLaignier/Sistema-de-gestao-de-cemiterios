@@ -67,8 +67,8 @@
         <p>Pesquisa de Cemiterios</p>
         <div id="top_Buttons">
         <button type="button" class="btn btn-outline-dark" onclick="buscaCadCemiterio()">Filtrar</button>
-        <a href="./cad_Cemiterio.html"><button type="button" class="btn btn-outline-dark">Novo</button></a>
-        <button type="button" class="btn btn-outline-dark" onclick="buscaCadCemiterioCod()">Limpar</button>
+        <a href="./cad_Cemiterio.html"><button type="button" class="btn btn-outline-dark" onclick="">Novo</button></a>
+        <button type="button" class="btn btn-outline-dark" onclick="buscaCadCemiterioCod();limpaTable()">Limpar</button>
         <a href="../index.html"><button type="button" class="btn btn-outline-dark">Fechar</button></a>
     
     </div>
@@ -117,7 +117,7 @@
         <div class="col-md-2">
           <div class="form-outline">
             <label class="form-label" for="state_Cemiterio">Estado</label>
-          <select id="state_Cemiterio" class="form-control" onclick="buscaEstados()">
+          <select id="state_Cemiterio" class="form-control state" onclick="buscaEstados()">
             <option> </option>
           </select>
             
@@ -131,6 +131,8 @@
     <table class="table table-hover">
       <thead>
         <tr>
+          <th scope="col">#</th>
+
           <th scope="col">Codigo</th>
           <th scope="col">Nome</th>
           <th scope="col">Endereco</th>

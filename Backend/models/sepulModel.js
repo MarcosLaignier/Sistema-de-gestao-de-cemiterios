@@ -1,13 +1,13 @@
 var sepultaModel = {
 
-    sepulcodigo:Number ,
-	sepulfalecido: String,
-	sepulcpffal: String,
-	sepulfuneraria: String,
-	sepulcemiterio: String,
-	sepulsepultura: String,
-	sepdatasepultamento: Date,
-	sepdatafalecimento: Date
+    sepulcodigo:Number,
+	sepulfalecido:String,
+	sepulcpffal:String,
+	sepulfuneraria:String,
+	sepulcemiterio:String,
+	sepulsepultura:String,
+	sepdatasepultamento:Date,
+	sepdatafalecimento:Date
   
 }
 

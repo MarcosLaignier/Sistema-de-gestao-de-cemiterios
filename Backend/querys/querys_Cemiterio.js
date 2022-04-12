@@ -21,9 +21,9 @@ class querysCemiterio{
     }
 
     async insert_Unidades(Form){
-        const sql = `insert into SGCUNIDADES (undnome,undendereco,undnumero,undcidade,undestado,undresponsavel) 
-        values ($1 , $2, $3, $4, $5, $6);`
-        const values = [Form.undnome , Form.undendereco , Form.undnumero ,Form.undcidade ,Form.undestado , Form.undresponsavel] 
+        const sql = `insert into SGCUNIDADES (undcodigo,undnome,undendereco,undnumero,undcidade,undestado,undresponsavel) 
+        values ($1 , $2, $3, $4, $5, $6, $7);`
+        const values = [Form.undcodigo, Form.undnome , Form.undendereco , Form.undnumero ,Form.undcidade ,Form.undestado , Form.undresponsavel] 
         return await conexaoDB.query(sql,values)
         
     }

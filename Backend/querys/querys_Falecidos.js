@@ -22,9 +22,9 @@ class querysFalecidos{
 
 
     async insert_Falecidos(modelFal){
-        const sql = `insert into SGCFALECIDOS (falnome,falcpf,falsexo,falnascimento,falnaturalidade,falfalecimento,falmedresp) 
-        values ($1 , $2, $3, $4, $5, $6,$7);`
-        const values = [modelFal.falnome , modelFal.falcpf , modelFal.falsexo , modelFal.falnascimento, modelFal.falnaturalidade, modelFal.falfalecimento, modelFal.falmedresp] 
+        const sql = `insert into SGCFALECIDOS (falcodigo,falnome,falcpf,falsexo,falnascimento,falnaturalidade,falfalecimento,falmedresp) 
+        values ($1 , $2, $3, $4, $5, $6,$7,$8);`
+        const values = [modelFal.falcodigo,modelFal.falnome , modelFal.falcpf , modelFal.falsexo , modelFal.falnascimento, modelFal.falnaturalidade, modelFal.falfalecimento, modelFal.falmedresp] 
         return await conexaoDB.query(sql,values)
         
     }

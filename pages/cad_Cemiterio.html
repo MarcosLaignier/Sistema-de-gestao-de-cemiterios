@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
-<body>
+<body onload="populaCodCemiterio()">
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
@@ -66,8 +66,8 @@
         <div id="title_Page">
         <p>Cadastro de Cemiterios</p>
         <div id="top_Buttons">
-        <button type="button" class="btn btn-outline-dark" onclick='validaCadCemiterio();dadosInputs();sendCadCemiterio()'>Salvar</button>
-        <button type="button" class="btn btn-outline-dark"onclick='validaForms()' >Excluir</button>
+        <button type="button" class="btn btn-outline-dark" onclick='validaCadCemiterio();sendCadCemiterio()'>Salvar</button>
+        <button type="button" class="btn btn-outline-dark" >Excluir</button>
         <a href="./filter_Cemiterio.html"><button type="button" class="btn btn-outline-dark">Fechar</button></a>
     
     </div>
@@ -94,7 +94,7 @@
           <div class="col-md-5">
             <div class="form-outline">
               <label class="form-label" for="name_Cemiterio">Nome</label>
-              <input type="text" id="name_Cemiterio" class="form-control  form_I" name="name_Cemiterio" />
+              <input type="text" id="name_Cemiterio" class="form-control  form_I" name="name_Cemiterio" required/>
               
             </div>
           </div>
@@ -104,7 +104,7 @@
         <div class="col-md-3">
           <div class="form-outline">
             <label class="form-label" for="endereco_Cemiterio">Endereço</label>
-            <input type="text" id="endereco_Cemiterio" class="form-control" name = ""/>
+            <input type="text" id="endereco_Cemiterio" class="form-control" name = "" required/>
             
           </div>
         </div>
@@ -127,7 +127,7 @@
         <div class="col-md-2">
           <div class="form-outline">
             <label class="form-label" for="state_Cemiterio">Estado</label>
-          <select id="state_Cemiterio" class="form-control state" onclick="buscaEstados()">
+          <select id="state_Cemiterio" class="form-control " onclick="buscaEstados()">
             <option> </option>
           </select>
             
@@ -153,6 +153,7 @@
     <footer>
       
     </footer>
+    
 </body>
 <script type="text/javascript" src="../scripts.js"></script>
 

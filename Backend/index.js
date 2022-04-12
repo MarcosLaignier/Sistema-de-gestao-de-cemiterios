@@ -5,6 +5,7 @@ import querys_Funerarias from './querys/querys_Funerarias.js';
 import cors from 'cors';
 import querys_Sepulturas from './querys/querys_Sepulturas.js';
 import querys_Sepultamentos from './querys/querys_Sepultamentos.js';
+import querys_Codigos from './querys/querys_Codigos.js';
 
 const app = express(); /* Colocando em uma variavel para poder utilizar futuramente */
 
@@ -47,6 +48,11 @@ app.post('/insert',async function(req,res){
   
 }) /* Criando uma rota que insere os dados de unidades do banco */
 
+app.get('/populaCodigoUnd',async function(req,res){
+  const pop_Cod = await querys_Codigos.codUnidades();
+  res.status(200).send(pop_Cod)
+}) 
+
 /* ------------------------------ROTA FALECIDOS------------------------------------------------ */
 app.get('/fal',async function(req,res){
   const busca_Falecidos = await querys_Falecidos.findFalecidos();
@@ -66,6 +72,10 @@ app.post('/insertFal',async function(req,res){
   
 })
 
+app.get('/populaCodigoFal',async function(req,res){
+  const pop_Cod_Fal = await querys_Codigos.codFalecidos();
+  res.status(200).send(pop_Cod_Fal)
+}) 
 /* ------------------------------ROTA SEPULTURAS------------------------------------------------ */
 app.get('/sep',async function(req,res){
   const busca_sepulturas = await querys_Sepulturas.findSepulturas();
