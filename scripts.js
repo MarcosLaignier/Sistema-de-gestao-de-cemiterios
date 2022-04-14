@@ -1,45 +1,43 @@
+
+
+/* ---------------------------- SideBar -------------------------------- */
+
 let btn = document.querySelector('#btn')
 let leftBar = document.querySelector('.leftBar')
 let leftMenu = document.querySelector('.left_Menu')
 let subMenu = document.querySelector('.subMenu')
 
-btn.onclick = function(){
-    leftBar.classList.toggle("active")
+btn.onclick = function () {
+  leftBar.classList.toggle("active")
 }
 
-function openCadInicial(){
+function openCadInicial() {
   let subMenuCadInicial = document.getElementById('subMenuCadInicial')
-  if(subMenuCadInicial.style.display == 'none'){
-  document.getElementById('subMenuCadInicial').style.display = 'block'
-}else{
-  document.getElementById('subMenuCadInicial').style.display = 'none'
-}
+  if (subMenuCadInicial.style.display == 'none') {
+    document.getElementById('subMenuCadInicial').style.display = 'block'
+  } else {
+    document.getElementById('subMenuCadInicial').style.display = 'none'
+  }
 }
 
-function openCad(){
+function openCad() {
   let subMenuCad = document.getElementById('subMenuCad')
-  if(subMenuCad.style.display == 'none'){
-  document.getElementById('subMenuCad').style.display = 'block'
-}else{
-  document.getElementById('subMenuCad').style.display = 'none'
-}
+  if (subMenuCad.style.display == 'none') {
+    document.getElementById('subMenuCad').style.display = 'block'
+  } else {
+    document.getElementById('subMenuCad').style.display = 'none'
+  }
 }
 
-function openMov(){
+function openMov() {
   let subMenuMov = document.getElementById('subMenuMov')
-  if(subMenuMov.style.display == 'none'){
-  document.getElementById('subMenuMov').style.display = 'block'
-}else{
-  document.getElementById('subMenuMov').style.display = 'none'
-}
+  if (subMenuMov.style.display == 'none') {
+    document.getElementById('subMenuMov').style.display = 'block'
+  } else {
+    document.getElementById('subMenuMov').style.display = 'none'
+  }
 }
 
-/* function toogle() {
-  if (document.getElementById("extend_left_bar").style.display == "none") {
-    document.getElementById("extend_left_bar").style.display = "block";
-  } else document.getElementById("extend_left_bar").style.display = "none";
-}
- */
 
 /* --------------------- Validacoes formularios ------------------------ */
 function validaCadCemiterio() {
@@ -56,9 +54,7 @@ function validaCadCemiterio() {
   } else {
     document.getElementById("alert_Form_Error").style.display = "none";
     document.getElementById("alert_Form_Sucess").style.display = "block";
-
-
-
+    return true;
 
   }
 }
@@ -71,10 +67,7 @@ function validaCadSepultura() {
   } else {
     document.getElementById("alert_Form_Error").style.display = "none";
     document.getElementById("alert_Form_Sucess").style.display = "block";
-
-
-
-
+    return true;
   }
 }
 
@@ -94,10 +87,7 @@ function validaCadFalecido() {
   } else {
     document.getElementById("alert_Form_Error").style.display = "none";
     document.getElementById("alert_Form_Sucess").style.display = "block";
-
-
-
-
+    return true;
   }
 }
 
@@ -113,10 +103,7 @@ function validaCadFuneraria() {
   } else {
     document.getElementById("alert_Form_Error").style.display = "none";
     document.getElementById("alert_Form_Sucess").style.display = "block";
-
-
-
-
+    return true;
   }
 }
 
@@ -139,15 +126,15 @@ function validaCadSepultamento() {
   } else {
     document.getElementById("alert_Form_Error").style.display = "none";
     document.getElementById("alert_Form_Sucess").style.display = "block";
-
-
-
+    return true;
 
   }
 }
 
 
 /* --------------------------------------------CADASTRO CEMITERIO ---------------------------------------------- */
+
+
 function sendCadCemiterio() {
   const codUnd = document.getElementById("cod_Cemiterio").value
   const name = document.getElementById("name_Cemiterio").value
@@ -159,7 +146,7 @@ function sendCadCemiterio() {
 
 
   const consolidaDados = {
-    undcodigo:codUnd,
+    undcodigo: codUnd,
     undnome: name,
     undendereco: endereco,
     undnumero: number,
@@ -253,7 +240,7 @@ function sendCadFalecido() {
   const respF = document.getElementById("medico_Falecido").value
 
   const consolidaDados = {
-    falcodigo:codF,
+    falcodigo: codF,
     falnome: nameF,
     falcpf: cpf,
     falsexo: sexoFal,
@@ -350,7 +337,6 @@ function populaCadFalNome(req) {
       optList.onclick = () => {
         document.getElementById('name_Pessoa').value = (data[i].falnome)
         document.getElementById('cpf_Pessoa').value = (data[i].falcpf)
-        document.getElementById('date_Falecimento').value = (data[i].falfalecimento)
         document.getElementById("name_fal").style.display = "none";
 
 
@@ -364,14 +350,14 @@ function populaCadFalNome(req) {
 }
 /* --------------------------------------------CADASTRO FUNERARIAS ------------------------------------------------ */
 function sendCadFunerarias() {
-  const codFun= document.getElementById("cod_Funeraria").value
+  const codFun = document.getElementById("cod_Funeraria").value
   const nameFun = document.getElementById("name_Funeraria").value
   const cidadeFun = document.getElementById("city_Funeraria").value
   const endFun = document.getElementById("endereco_Funeraria").value
   const numFun = document.getElementById("number_Funeraria").value
 
   const consolidaDados = {
-    funcodigo:codFun,
+    funcodigo: codFun,
     fundescricao: nameFun,
     funcidade: cidadeFun,
     funendereco: endFun,
@@ -456,7 +442,7 @@ function sendCadSepulturas() {
 
 
   const consolidaDados = {
-    sepcodigo:codSep,
+    sepcodigo: codSep,
     sepdescricao: descSep,
     sepcemiterio: nameCem,
 
@@ -526,7 +512,7 @@ function sendCadSepultamento() {
   const nomeSep = document.getElementById("name_Sepultura").value
 
   const consolidaDados = {
-    sepulcodigo:codSepul,
+    sepulcodigo: codSepul,
     sepulfalecido: nomeFal,
     sepulcpffal: cpfFal,
     sepulfuneraria: nomeFun,
@@ -658,73 +644,94 @@ function dadosTable(d1, d2, d3, d4, d5) {
 function populaCodCemiterio() {
 
 
-  fetch ('http://localhost:8081/populaCodigoUnd').then(response =>{
+  fetch('http://localhost:8081/populaCodigoUnd').then(response => {
     return response.json();
-  }).then(data =>{ 
-      recebeCodUnidade = data[0].undcodigo
-      populaCod = recebeCodUnidade + 1
+  }).then(data => {
+    recebeCodUnidade = data[0].undcodigo
+    populaCod = recebeCodUnidade + 1
 
     document.getElementById("cod_Cemiterio").value = populaCod
   }
-  )}
+  )
+}
 
-  function populaCodFalecido() {
+function populaCodFalecido() {
 
 
-    fetch ('http://localhost:8081/populaCodigoFal').then(response =>{
-      return response.json();
-    }).then(data =>{ 
-        recebeCodUnidade = data[0].falcodigo
-        populaCod = recebeCodUnidade + 1
-        console.log(populaCod)
+  fetch('http://localhost:8081/populaCodigoFal').then(response => {
+    return response.json();
+  }).then(data => {
+    recebeCodUnidade = data[0].falcodigo
+    populaCod = recebeCodUnidade + 1
+    console.log(populaCod)
+
+    document.getElementById("cod_Falecido").value = populaCod
+  }
+  )
+}
+
+
+function populaCodsepulturas() {
+
+
+  fetch('http://localhost:8081/populaCodigoSep').then(response => {
+    return response.json();
+  }).then(data => {
+    recebeCodUnidade = data[0].sepcodigo
+    populaCod = recebeCodUnidade + 1
+    console.log(populaCod)
+
+    document.getElementById("cod_Sepultura").value = populaCod
+  }
+  )
+}
+
+function populaCodFunerarias() {
+
+
+  fetch('http://localhost:8081/populaCodigoFun').then(response => {
+    return response.json();
+  }).then(data => {
+    recebeCodUnidade = data[0].funcodigo
+    populaCod = recebeCodUnidade + 1
+    console.log(populaCod)
+
+    document.getElementById("cod_Funeraria").value = populaCod
+  }
+  )
+}
+
+
+function populaCodSepultamentos() {
+
+
+  fetch('http://localhost:8081/populaCodigoSepul').then(response => {
+    return response.json();
+  }).then(data => {
+    recebeCodUnidade = data[0].sepulcodigo
+    populaCod = recebeCodUnidade + 1
+    console.log(populaCod)
+
+    document.getElementById("cod_Sepultamento").value = populaCod
+  }
+  )
+}
+
+
+
+/* ------------------------------chamada de funcao nos botoes ------------------------------ */
+
+
+var btnSalvarCemiterio = document.querySelector('#btn_SaveCemiterio')
+
+btnSalvarCemiterio.onclick = function () {
+  validaCadCemiterio();
+  if (validaCadCemiterio() == true) {
+    sendCadCemiterio()
+  }
+}
   
-      document.getElementById("cod_Falecido").value = populaCod
-    }
-    )}
-  
-
-    function populaCodsepulturas() {
 
 
-      fetch ('http://localhost:8081/populaCodigoSep').then(response =>{
-        return response.json();
-      }).then(data =>{ 
-          recebeCodUnidade = data[0].sepcodigo
-          populaCod = recebeCodUnidade + 1
-          console.log(populaCod)
-    
-        document.getElementById("cod_Sepultura").value = populaCod
-      }
-      )}
-
-      function populaCodFunerarias() {
 
 
-        fetch ('http://localhost:8081/populaCodigoFun').then(response =>{
-          return response.json();
-        }).then(data =>{ 
-            recebeCodUnidade = data[0].funcodigo
-            populaCod = recebeCodUnidade + 1
-            console.log(populaCod)
-      
-          document.getElementById("cod_Funeraria").value = populaCod
-        }
-        )}
-
-        
-      function populaCodSepultamentos() {
-
-
-        fetch ('http://localhost:8081/populaCodigoSepul').then(response =>{
-          return response.json();
-        }).then(data =>{ 
-            recebeCodUnidade = data[0].sepulcodigo
-            populaCod = recebeCodUnidade + 1
-            console.log(populaCod)
-      
-          document.getElementById("cod_Sepultamento").value = populaCod
-        }
-        )}
-
-
-        
