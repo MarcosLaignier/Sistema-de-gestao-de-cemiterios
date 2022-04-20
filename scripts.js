@@ -301,8 +301,10 @@ function buscaCadFalecido() {
   }).then(data => {
     limpaTable()
     for (i = 0; i < data.length; i++) {
+      var dataNasc= formataData(data[i].falnascimento)
+      var dataFalecimento = formataData(data[i].falfalecimento)
 
-      dadosTable(data[i].falcodigo, data[i].falnome, data[i].falcpf, data[i].falnascimento, data[i].falfalecimento)
+      dadosTable(data[i].falcodigo, data[i].falnome, data[i].falcpf, dataNasc, dataFalecimento)
     }
   })
 }
@@ -367,8 +369,10 @@ function populaCadFalNome(req) {
       optList.appendChild(textList)
 
       optList.onclick = () => {
+        var dateFal = formataDataInverso(data[i].falfalecimento)
         document.getElementById('name_Pessoa').value = (data[i].falnome)
         document.getElementById('cpf_Pessoa').value = (data[i].falcpf)
+        document.getElementById('date_Falecimento').value = (dateFal)
         document.getElementById("name_fal").style.display = "none";
 
 
@@ -643,8 +647,7 @@ function dadosTable(d1, d2, d3, d4, d5) {
     linkTable()
   }
   cellText.id = d1
-  cellText.className = 'entry'
-  cellText.name = 'tt'
+  cellText.className = 'btnAlter'
   createDados()
   if (typeof d1 !== 'undefined') {
     var cell = createTD()
@@ -892,4 +895,24 @@ function urlParametros() {
   }
 }
 
+/* ------------------------------FUNCAO FORMATA DATA ------------------------------ */
+function adicionaZero(numero){
+  if (numero <= 9) 
+      return "0" + numero;
+  else
+      return numero; 
+}
 
+function formataData(dataDB){
+  dataDB = new Date
+ dataFormatada = (adicionaZero(dataDB.getDate().toString()) + "/" + (adicionaZero(dataDB.getMonth()+1).toString()) + "/" + dataDB.getFullYear());
+
+ return dataFormatada
+}
+
+function formataDataInverso(dataDB){
+  dataDB = new Date
+ dataFormatadaInverso = (  + dataDB.getFullYear() + "-" + (adicionaZero(dataDB.getMonth()+1).toString()) + "-" + adicionaZero(dataDB.getDate().toString()));
+
+ return dataFormatadaInverso
+}
