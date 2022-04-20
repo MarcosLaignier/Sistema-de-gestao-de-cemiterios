@@ -53,6 +53,14 @@ app.get('/populaCodigoUnd',async function(req,res){
   res.status(200).send(pop_Cod)
 }) 
 
+app.put('/updateUnd',async function(req,res){
+  const dados =req.body
+  await querys_Cemiterio.altera_Unidades(dados)
+  res.status(200).send('alterado com sucesso' )
+  
+})
+
+
 /* ------------------------------ROTA FALECIDOS------------------------------------------------ */
 app.get('/fal',async function(req,res){
   const busca_Falecidos = await querys_Falecidos.findFalecidos();

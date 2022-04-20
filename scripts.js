@@ -11,6 +11,7 @@ btn.onclick = function () {
   leftBar.classList.toggle("active")
 }
 
+
 function openCadInicial() {
   let subMenuCadInicial = document.getElementById('subMenuCadInicial')
   if (subMenuCadInicial.style.display == 'none') {
@@ -223,6 +224,37 @@ function populaNomeCemiterio() {
       select.appendChild(option)
       option.appendChild(textOpt)
     }
+  })
+
+}
+
+function altCadCemiterio() {
+  const codUnd = document.getElementById("cod_Cemiterio").value
+  const name = document.getElementById("name_Cemiterio").value
+  const endereco = document.getElementById("endereco_Cemiterio").value
+  const number = document.getElementById("number_Cemiterio").value
+  const city = document.getElementById("city_Cemiterio").value
+  const state = document.getElementById("state_Cemiterio").value
+  const resp = document.getElementById("responsavel_Cemiterio").value
+
+
+  const consolidaDados = {
+    undcodigo: codUnd,
+    undnome: name,
+    undendereco: endereco,
+    undnumero: number,
+    undcidade: city,
+    undestado: state,
+    undresponsavel: resp
+  }
+
+  fetch('http://localhost:8081/updateUnd', {
+    "method": "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(consolidaDados)
+
   })
 
 }
@@ -590,10 +622,9 @@ function limpaTable() {
 }
 
 /* --------------------------------------------FUNC CRIA TABELAS ---------------------------------------------- */
-
 function dadosTable(d1, d2, d3, d4, d5) {
 
-  var table = document.getElementById('tbody')
+  var table = document.getElementById('tbody');
   var row = document.createElement("tr");
 
   function createTD() {
@@ -608,6 +639,12 @@ function dadosTable(d1, d2, d3, d4, d5) {
 
   var cell = createTD()
   var cellText = document.createElement("button");
+  cellText.onclick = function () {
+    linkTable()
+  }
+  cellText.id = d1
+  cellText.className = 'entry'
+  cellText.name = 'tt'
   createDados()
   if (typeof d1 !== 'undefined') {
     var cell = createTD()
@@ -634,7 +671,6 @@ function dadosTable(d1, d2, d3, d4, d5) {
     var cellText = document.createTextNode(d5);
     createDados()
   }
-
 
 
 }
@@ -719,19 +755,141 @@ function populaCodSepultamentos() {
 
 
 
-/* ------------------------------chamada de funcao nos botoes ------------------------------ */
+/* ------------------------------FUNCAO DOS BUTTONS ------------------------------ */
 
+function button_SaveCemiterio() {
+  var btnSalvarCemiterio = document.querySelector('#btn_SaveCemiterio')
 
-var btnSalvarCemiterio = document.querySelector('#btn_SaveCemiterio')
+  btnSalvarCemiterio.onclick = function () {
+    validaCadCemiterio();
+    if (validaCadCemiterio() == true) {
+      if (urlParametros() == true) {
+        altCadCemiterio()
 
-btnSalvarCemiterio.onclick = function () {
-  validaCadCemiterio();
-  if (validaCadCemiterio() == true) {
-    sendCadCemiterio()
+      } else {
+        sendCadCemiterio()
+      }
+    }
   }
 }
-  
+
+function button_LimparTable() {
+  var btnLimparTable = document.querySelector('#btn_LimpaTable')
+
+  btnLimparTable.onclick = function () {
+    limpaTable()
+  }
+}
 
 
+/* ------------------------------POPULA DADOS PARA ALTERACAO ------------------------------ */
+
+function dados_Cemiterio(cod) {
+
+  const consolidaDados = {
+    undcodigo: cod
+  }
+
+
+  fetch('http://localhost:8081/cod', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(consolidaDados)
+
+  }).then(response => {
+    return response.json();
+  }).then(data => {
+    for (i = 0; i < data.length; i++) {
+
+      document.getElementById("cod_Cemiterio").value = data[i].undcodigo
+      document.getElementById("name_Cemiterio").value = data[i].undnome
+      document.getElementById("endereco_Cemiterio").value = data[i].undendereco
+      document.getElementById("number_Cemiterio").value = data[i].undnumero
+      document.getElementById("city_Cemiterio").value = data[i].undcidade
+      document.getElementById("state_Cemiterio").value = data[i].undestado
+      document.getElementById("responsavel_Cemiterio").value = data[i].undresponsavel
+
+
+    }
+  })
+}
+
+function dados_Sepulturas(cod) {
+
+  const consolidaDados = {
+    sepcodigo: cod
+  }
+
+
+  fetch('http://localhost:8081/sepCod', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(consolidaDados)
+
+  }).then(response => {
+    return response.json();
+  }).then(data => {
+    for (i = 0; i < data.length; i++) {
+
+      document.getElementById("cod_Sepultura").value = data[i].sepcodigo
+      document.getElementById("desc_Sepultura").value = data[i].sepdescricao
+      document.getElementById("name_Cemiterio").value = data[i].sepcemiterio
+      
+
+
+    }
+  })
+}
+
+/* ------------------------------FUNCAO COLETA IDS DA TABLE ------------------------------ */
+
+
+function linkTable() {
+
+  document.querySelectorAll("button").forEach(function (button) {
+
+    button.addEventListener("click", function (event) {
+      const el = event.target;
+      var id = el.id;
+      console.log(id);
+
+      
+      mudaTela(id)
+
+    });
+
+  });
+}
+
+/* ------------------------------FUNCAO MUDA A TELA PASSANDO O ID NA URL ------------------------------ */
+
+
+function mudaTela(id) {
+  if( location.pathname == '/pages/filter_Cemiterio.html'){
+  window.location.href = (`/pages/cad_Cemiterio.html?id=${id}`)
+}else if( location.pathname == '/pages/filter_Sepultura.html'){
+  window.location.href = (`/pages/cad_Sepultura.html?id=${id}`)
+}
+}
+
+/* ------------------------------FUNCAO PEGA O ID E RODA A POPULA ------------------------------ */
+
+function urlParametros() {
+  const urlParam = new URLSearchParams(window.location.search);
+  const idParam = urlParam.get("id")
+  if (idParam > 0) {
+    if( location.pathname == '/pages/cad_Cemiterio.html'){
+      dados_Cemiterio(idParam)
+    }else if( location.pathname == '/pages/cad_Sepultura.html'){
+      dados_Sepulturas(idParam)
+    }
+    
+    return true
+  }
+}
 
 

@@ -4,7 +4,9 @@
 }
 header{
     display: block;
-    position: relative;
+    z-index: 10;
+    position: fixed;
+    width: 100%;
     
 }
 #logo{
@@ -14,16 +16,15 @@ header{
 
 #top_bar{
     background-color: #f0f0f0;
-    
+    padding: 10px 0;
     height: 50px;    
     text-align: center;
     font-size: 1.3em;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: relative;
+    top: 60px;
 }
 
-#top_bar{
-    padding: 10px 0;
-}
 
 
 #dados_Cemiterio{
@@ -32,7 +33,7 @@ header{
     left: 80px;
 }
 #top_Nav{
-    padding-top: 2vh;
+    padding-top: 8vh;
 }
 #title_Page{
     display: flex;
@@ -86,7 +87,7 @@ header{
     padding: 70px 10px;
     font-size: 17px;
     transition: 0.5s ease;
-    z-index: 1;
+    z-index: 2;
 
 }
 
@@ -143,20 +144,22 @@ header{
 
 .leftBar .subMenu{
     display: none;
+    
 }
 
 .leftBar.active .subMenu{
     display: none;
+   /* position: absolute;
+    left: 270px;
+    background-color: #f0f0f0;
+    list-style: none; */
+    
 }
 
 #subMenuCadInicial, #subMenuCad , #subMenuMov{
     text-align: center
 }
 
-/* .subMenu li a i{
-    
-    
-} */
 
 .leftBar ul li a i{
 font-size: 30px;
