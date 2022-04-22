@@ -72,6 +72,11 @@ app.post('/falnome',async function(req,res){
   const busca_Falecidos_Nome = await querys_Falecidos.findFalecidosNome(falnome);
   res.status(200).send(busca_Falecidos_Nome)
 })
+app.post('/falCod',async function(req,res){
+  const falcod = req.body
+  const busca_Falecidos_Nome = await querys_Falecidos.findFalecidoCod(falcod);
+  res.status(200).send(busca_Falecidos_Nome)
+})
 
 app.post('/insertFal',async function(req,res){
   const dados =req.body
@@ -84,6 +89,13 @@ app.get('/populaCodigoFal',async function(req,res){
   const pop_Cod_Fal = await querys_Codigos.codFalecidos();
   res.status(200).send(pop_Cod_Fal)
 }) 
+
+app.put('/updateFal',async function(req,res){
+  const dados =req.body
+  await querys_Falecidos.altera_Falecidos(dados)
+  res.status(200).send('alterado com sucesso' )
+  
+})
 /* ------------------------------ROTA SEPULTURAS------------------------------------------------ */
 app.get('/sep',async function(req,res){
   const busca_sepulturas = await querys_Sepulturas.findSepulturas();
@@ -108,6 +120,12 @@ app.get('/populaCodigoSep',async function(req,res){
   res.status(200).send(pop_Cod)
 }) 
 
+app.put('/updateSep',async function(req,res){
+  const dados =req.body
+  await querys_Sepulturas.altera_Sepultura(dados)
+  res.status(200).send('alterado com sucesso' )
+  
+})
 /* ------------------------------ROTA FUNERARIAS------------------------------------------------ */
 app.get('/fun',async function(req,res){
   const busca_Fun = await querys_Funerarias.findFunerarias();

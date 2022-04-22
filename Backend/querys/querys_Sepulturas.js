@@ -5,7 +5,7 @@ import modelSep from '../models/sepModel.js';
 
 class querysSepulturas{
     async findSepulturas(){
-        const sql = `select * from SGCSEPULTURAS;` 
+        const sql = `select * from SGCSEPULTURAS order by SEPCODIGO;` 
         const result = await conexaoDB.query(sql);  
         const rows = result.rows;
         return rows || []; 
@@ -27,7 +27,16 @@ class querysSepulturas{
         return await conexaoDB.query(sql,values)
         
     }
-
+    async altera_Sepultura(modelSep){
+        const sql = `update SGCSEPULTURAS set sepdescricao = $1, sepcemiterio = $2  where sepCodigo = $3`
+        const values = [modelSep.sepdescricao, modelSep.sepcemiterio,modelSep.sepcodigo ] 
+        return await conexaoDB.query(sql,values)
+        
+    }
 }
+
+
+
+
 
 export default new querysSepulturas();

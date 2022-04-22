@@ -301,7 +301,7 @@ function buscaCadFalecido() {
   }).then(data => {
     limpaTable()
     for (i = 0; i < data.length; i++) {
-      var dataNasc= formataData(data[i].falnascimento)
+      var dataNasc = formataData(data[i].falnascimento)
       var dataFalecimento = formataData(data[i].falfalecimento)
 
       dadosTable(data[i].falcodigo, data[i].falnome, data[i].falcpf, dataNasc, dataFalecimento)
@@ -383,6 +383,39 @@ function populaCadFalNome(req) {
 
     }
   })
+}
+
+function alteraCadFalecido() {
+  const codF = document.getElementById("cod_Falecido").value
+  const nameF = document.getElementById("name_Falecido").value
+  const cpf = document.getElementById("cpf_Falecido").value
+  const sexoFal = document.getElementById("sexo_Falecido").value
+  const dateNasc = document.getElementById("nascimento_Falecido").value
+  const natFal = document.getElementById("naturalidade_Falecido").value
+  const dateFalecimento = document.getElementById("date_Falecimento").value
+  const respF = document.getElementById("medico_Falecido").value
+
+  const consolidaDados = {
+    falcodigo: codF,
+    falnome: nameF,
+    falcpf: cpf,
+    falsexo: sexoFal,
+    falnascimento: dateNasc,
+    falnaturalidade: natFal,
+    falfalecimento: dateFalecimento,
+    falmedresp: respF
+  }
+
+
+  fetch('http://localhost:8081/updateFal', {
+    "method": "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(consolidaDados)
+
+  })
+
 }
 /* --------------------------------------------CADASTRO FUNERARIAS ------------------------------------------------ */
 function sendCadFunerarias() {
@@ -535,6 +568,33 @@ function buscaCadSepCod(req) {
 
     }
   })
+}
+
+
+
+function alteraCadSepultura() {
+  const codSep = document.getElementById("cod_Sepultura").value
+  const descSep = document.getElementById("desc_Sepultura").value
+  const nameCem = document.getElementById("name_Cemiterio").value
+ 
+
+  const consolidaDados = {
+    sepcodigo: codSep,
+    sepdescricao: descSep,
+    sepcemiterio: nameCem,
+    
+  }
+
+
+  fetch('http://localhost:8081/updateSep', {
+    "method": "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(consolidaDados)
+
+  })
+
 }
 /* --------------------------------------------CADASTRO SEPULTAMENTO ---------------------------------------------- */
 function sendCadSepultamento() {
@@ -784,6 +844,39 @@ function button_LimparTable() {
   }
 }
 
+function button_SaveFalecido() {
+  var btnSalvarFalecido = document.querySelector('#btn_SaveFalecido')
+
+  btnSalvarFalecido.onclick = function () {
+    validaCadFalecido();
+    if (validaCadFalecido() == true) {
+      if (urlParametros() == true) {
+        alteraCadFalecido()
+
+      } else {
+        sendCadFalecido()
+      }
+    }
+  }
+}
+
+function button_SaveSepultura() {
+  var btnSalvarSepultura = document.querySelector('#btn_SaveSepultura')
+
+  btnSalvarSepultura.onclick = function () {
+    validaCadSepultura();
+    if (validaCadSepultura() == true) {
+      if (urlParametros() == true) {
+        alteraCadSepultura()
+
+      } else {
+        sendCadSepulturas()
+      }
+    }
+  }
+}
+
+
 
 /* ------------------------------POPULA DADOS PARA ALTERACAO ------------------------------ */
 
@@ -841,8 +934,40 @@ function dados_Sepulturas(cod) {
       document.getElementById("cod_Sepultura").value = data[i].sepcodigo
       document.getElementById("desc_Sepultura").value = data[i].sepdescricao
       document.getElementById("name_Cemiterio").value = data[i].sepcemiterio
-      
 
+
+
+    }
+  })
+}
+
+function dados_Falecidos(cod) {
+
+  const consolidaDados = {
+    falcodigo: cod
+  }
+
+
+  fetch('http://localhost:8081/falCod', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(consolidaDados)
+
+  }).then(response => {
+    return response.json();
+  }).then(data => {
+    for (i = 0; i < data.length; i++) {
+
+      document.getElementById("cod_Falecido").value = data[i].falcodigo
+      document.getElementById("name_Falecido").value = data[i].falnome
+      document.getElementById("cpf_Falecido").value = data[i].falcpf
+      document.getElementById("sexo_Falecido").value = data[i].falsexo
+      document.getElementById("nascimento_Falecido").value = formataDataInverso(data[i].falnascimento)
+      document.getElementById("naturalidade_Falecido").value = data[i].falnaturalidade
+      document.getElementById("date_Falecimento").value = formataDataInverso(data[i].falfalecimento)
+      document.getElementById("medico_Falecido").value= data[i].falmedresp
 
     }
   })
@@ -860,7 +985,7 @@ function linkTable() {
       var id = el.id;
       console.log(id);
 
-      
+
       mudaTela(id)
 
     });
@@ -872,11 +997,13 @@ function linkTable() {
 
 
 function mudaTela(id) {
-  if( location.pathname == '/pages/filter_Cemiterio.html'){
-  window.location.href = (`/pages/cad_Cemiterio.html?id=${id}`)
-}else if( location.pathname == '/pages/filter_Sepultura.html'){
-  window.location.href = (`/pages/cad_Sepultura.html?id=${id}`)
-}
+  if (location.pathname == '/pages/filter_Cemiterio.html') {
+    window.location.href = (`/pages/cad_Cemiterio.html?id=${id}`)
+  } else if (location.pathname == '/pages/filter_Sepultura.html') {
+    window.location.href = (`/pages/cad_Sepultura.html?id=${id}`)
+  }else if (location.pathname == '/pages/filter_Falecido.html') {
+    window.location.href = (`/pages/cad_Falecido.html?id=${id}`)
+  }
 }
 
 /* ------------------------------FUNCAO PEGA O ID E RODA A POPULA ------------------------------ */
@@ -885,41 +1012,43 @@ function urlParametros() {
   const urlParam = new URLSearchParams(window.location.search);
   const idParam = urlParam.get("id")
   if (idParam > 0) {
-    if( location.pathname == '/pages/cad_Cemiterio.html'){
+    if (location.pathname == '/pages/cad_Cemiterio.html') {
       dados_Cemiterio(idParam)
-    }else if( location.pathname == '/pages/cad_Sepultura.html'){
+    } else if (location.pathname == '/pages/cad_Sepultura.html') {
       dados_Sepulturas(idParam)
+    }else if (location.pathname == '/pages/cad_Falecido.html') {
+      dados_Falecidos(idParam)
     }
-    
+
     return true
   }
 }
 
 /* ------------------------------FUNCAO FORMATA DATA ------------------------------ */
-function adicionaZero(numero){
-  if (numero <= 9) 
-      return "0" + numero;
+function adicionaZero(numero) {
+  if (numero <= 9)
+    return "0" + numero;
   else
-      return numero; 
+    return numero;
 }
 
-function formataData(dataDB){
+function formataData(dataDB) {
   dataDB = new Date
- dataFormatada = (adicionaZero(dataDB.getDate().toString()) + "/" + (adicionaZero(dataDB.getMonth()+1).toString()) + "/" + dataDB.getFullYear());
+  dataFormatada = (adicionaZero(dataDB.getDate().toString()) + "/" + (adicionaZero(dataDB.getMonth() + 1).toString()) + "/" + dataDB.getFullYear());
 
- return dataFormatada
+  return dataFormatada
 }
 
-function formataDataInverso(dataDB){
+function formataDataInverso(dataDB) {
   dataDB = new Date
- dataFormatadaInverso = (  + dataDB.getFullYear() + "-" + (adicionaZero(dataDB.getMonth()+1).toString()) + "-" + adicionaZero(dataDB.getDate().toString()));
+  dataFormatadaInverso = (+ dataDB.getFullYear() + "-" + (adicionaZero(dataDB.getMonth() + 1).toString()) + "-" + adicionaZero(dataDB.getDate().toString()));
 
- return dataFormatadaInverso
+  return dataFormatadaInverso
 }
 
-function formataCPF(){
-   cpf = getElementById('cpffal')
-  
-    cpf.split('.',3)
-  
+function formataCPF() {
+  cpf = getElementById('cpffal')
+
+  cpf.split('.', 3)
+
 }
