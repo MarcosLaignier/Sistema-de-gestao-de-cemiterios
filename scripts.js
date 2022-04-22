@@ -80,7 +80,7 @@ function validaCadFalecido() {
   } else if (document.getElementById("sexo_Falecido").value == "") {
     document.getElementById("alert_Form_Error").style.display = "block";
   } else if (document.getElementById("nascimento_Falecido").value == "") {
-    document.getElementById("alert_Form").style.display = "block";
+    document.getElementById("alert_Form_Error").style.display = "block";
   } else if (document.getElementById("naturalidade_Falecido").value == "") {
     document.getElementById("alert_Form_Error").style.display = "block";
   } else if (document.getElementById("date_Falecimento").value == "") {
@@ -915,4 +915,11 @@ function formataDataInverso(dataDB){
  dataFormatadaInverso = (  + dataDB.getFullYear() + "-" + (adicionaZero(dataDB.getMonth()+1).toString()) + "-" + adicionaZero(dataDB.getDate().toString()));
 
  return dataFormatadaInverso
+}
+
+function formataCPF(){
+   cpf = getElementById('cpffal')
+  
+    cpf.split('.',3)
+  
 }

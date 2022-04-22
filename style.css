@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 *{
     font-family: 'Poppins', sans-serif;
+    max-width: 100%;
+}
+div{
+    max-width: 100%;
 }
 header{
     display: block;
     z-index: 10;
     position: fixed;
-    width: 100%;
+    width: 100vw;
     
 }
 #logo{
@@ -52,11 +56,20 @@ header{
 #top_Buttons button{
     margin: 0 05px;
 }
-.form_SGC , table{
+.form_SGC {
     position: relative;
     left: 70px;
-    width: 100%;
+    
+    
 }
+
+.table{
+    position: relative;
+    left: 70px;
+max-width: 100%;
+width: (100% - 70px);
+}
+
 #resultados{
     padding-top: 10px;
     position: relative;
@@ -79,7 +92,7 @@ header{
     
 .leftBar{
     background-color: #f0f0f0;
-    max-width: 100vw;
+    
     width: 60px;
     max-height: 100vh;
     height: 100vh;  
