@@ -155,6 +155,13 @@ app.get('/populaCodigoFun',async function(req,res){
   res.status(200).send(pop_Cod)
 }) 
 
+app.put('/updateFun',async function(req,res){
+  const dados =req.body
+  await querys_Funerarias.altera_Funerarias(dados)
+  res.status(200).send('alterado com sucesso' )
+  
+})
+
 /* ------------------------------ROTA SEPULTAMENTO---------------------------------------------- */
 app.get('/sepul',async function(req,res){
   const busca_sepultamentos = await querys_Sepultamentos.findSepultamentos();
