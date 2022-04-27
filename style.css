@@ -29,7 +29,13 @@ header{
     top: 60px;
 }
 
-
+#navbarNavDropdown{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    align-items: flex-end;
+    
+}
 
 #dados_Cemiterio{
     display: flex;
