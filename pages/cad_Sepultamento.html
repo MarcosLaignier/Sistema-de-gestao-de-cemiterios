@@ -12,7 +12,7 @@
   <script src="https://kit.fontawesome.com/9f011370bd.js" crossorigin="anonymous"></script>
 </head>
 
-<body onload="populaCodSepultamentos()">
+<body onload="populaCodCadastros()">
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
@@ -116,8 +116,8 @@
     <div id="title_Page">
       <p>Cadastro de Sepultamentos</p>
       <div id="top_Buttons">
-        <button type="button" class="btn btn-outline-dark" onclick='validaCadSepultamento();sendCadSepultamento()' id="">Salvar</button>
-        <button type="button" class="btn btn-outline-dark">Excluir</button>
+        <button type="button" class="btn btn-outline-dark" onclick='button_SaveSepultamento()' id="btn_SaveSepultamento">Salvar</button>
+        <button type="button" class="btn btn-outline-dark" onclick="button_DeleteSepultamento()" id="btn_DeleteSepultamento">Excluir</button>
         <a href="./filter_Sepultamento.html"><button type="button" class="btn btn-outline-dark">Fechar</button></a>
 
       </div>

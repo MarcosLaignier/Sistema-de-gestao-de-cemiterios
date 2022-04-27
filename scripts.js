@@ -7,9 +7,15 @@ let leftBar = document.querySelector('.leftBar')
 let leftMenu = document.querySelector('.left_Menu')
 let subMenu = document.querySelector('.subMenu')
 
-btn.onclick = function () {
+function extendLeftBar(){
   leftBar.classList.toggle("active")
 }
+
+btn.onclick = function () {
+extendLeftBar()
+
+}
+
 
 
 function openCadInicial() {
@@ -156,7 +162,7 @@ function sendCadCemiterio() {
     undresponsavel: resp
   }
 
-  fetch('http://localhost:8081/insert', {
+  fetch('http://localhost:8081/insertUnd', {
     "method": "POST",
     headers: {
       "Content-Type": "application/json"
@@ -169,7 +175,7 @@ function sendCadCemiterio() {
 
 
 function buscaCadCemiterio() {
-  fetch('http://localhost:8081/').then(response => {
+  fetch('http://localhost:8081/und').then(response => {
     return response.json();
   }).then(data => {
     limpaTable()
@@ -256,6 +262,25 @@ function altCadCemiterio() {
     body: JSON.stringify(consolidaDados)
 
   })
+
+}
+
+function deleteCadCemiterio() {
+  const codUnd = document.getElementById("cod_Cemiterio").value
+
+  const consolidaDados = {
+    undcodigo: codUnd,
+  }
+
+  fetch('http://localhost:8081/deleteUnd', {
+    "method": "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(consolidaDados)
+
+  })
+  return true
 
 }
 
@@ -417,6 +442,25 @@ function alteraCadFalecido() {
   })
 
 }
+
+function deleteCadFalecido() {
+  const codF = document.getElementById("cod_Falecido").value
+
+  const consolidaDados = {
+    falcodigo: codF,
+    }
+
+
+  fetch('http://localhost:8081/deleteFal', {
+    "method": "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(consolidaDados)
+
+  })
+
+}
 /* --------------------------------------------CADASTRO FUNERARIAS ------------------------------------------------ */
 function sendCadFunerarias() {
   const codFun = document.getElementById("cod_Funeraria").value
@@ -532,6 +576,25 @@ function alteraCadFuneraria() {
 
 }
 
+function deleteCadFuneraria() {
+  const codFun = document.getElementById("cod_Funeraria").value
+
+  const consolidaDados = {
+    funcodigo: codFun,
+
+  }
+
+
+  fetch('http://localhost:8081/deleteFun', {
+    "method": "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(consolidaDados)
+
+  })
+
+}
 /* --------------------------------------------CADASTRO SEPULTURAS ------------------------------------------------ */
 function sendCadSepulturas() {
   const codSep = document.getElementById("cod_Sepultura").value
@@ -625,6 +688,27 @@ function alteraCadSepultura() {
   })
 
 }
+
+function deleteCadSepultura() {
+  const codSep = document.getElementById("cod_Sepultura").value
+
+  const consolidaDados = {
+    sepcodigo: codSep,
+    
+
+  }
+
+
+  fetch('http://localhost:8081/deleteSep', {
+    "method": "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(consolidaDados)
+
+  })
+
+}
 /* --------------------------------------------CADASTRO SEPULTAMENTO ---------------------------------------------- */
 function sendCadSepultamento() {
   const codSepul = document.getElementById("cod_Sepultamento").value
@@ -666,14 +750,67 @@ function buscaCadSepultamento() {
   }).then(data => {
     limpaTable()
     for (i = 0; i < data.length; i++) {
-      dadosTable(data[i].sepulcodigo, data[i].sepulfalecido, data[i].sepulcpffal, data[i].sepdatasepultamento, data[i].sepulcemiterio)
+      var dataFormatada = formataData(data[i].sepdatasepultamento)
+      dadosTable(data[i].sepulcodigo, data[i].sepulfalecido, data[i].sepulcpffal, dataFormatada, data[i].sepulcemiterio)
 
 
     }
   })
 }
 
+function alteraCadSepultamento() {
+  const codSepul = document.getElementById("cod_Sepultamento").value
+  const nomeFal = document.getElementById("name_Pessoa").value
+  const cpfFal = document.getElementById("cpf_Pessoa").value
+  const nomeFun = document.getElementById("name_Funeraria").value
+  const dateSep = document.getElementById("date_Sepultamento").value
+  const nomeCem = document.getElementById("name_Cemiterio").value
+  const dateFal = document.getElementById("date_Falecimento").value
+  const nomeSep = document.getElementById("name_Sepultura").value
 
+  const consolidaDados = {
+    sepulcodigo: codSepul,
+    sepulfalecido: nomeFal,
+    sepulcpffal: cpfFal,
+    sepulfuneraria: nomeFun,
+    sepdatasepultamento: dateSep,
+    sepulcemiterio: nomeCem,
+    sepdatafalecimento: dateFal,
+    sepulsepultura: nomeSep
+  }
+
+
+  fetch('http://localhost:8081/updateSepul', {
+    "method": "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(consolidaDados)
+
+  })
+
+}
+
+function deleteCadSepultamento() {
+  const codSepul = document.getElementById("cod_Sepultamento").value
+  
+
+  const consolidaDados = {
+    sepulcodigo: codSepul,
+  
+  }
+
+
+  fetch('http://localhost:8081/deleteSepul', {
+    "method": "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(consolidaDados)
+
+  })
+
+}
 /* --------------------------------------------FUNC POPULA ESTADOS ---------------------------------------------- */
 
 
@@ -922,6 +1059,93 @@ function button_SaveFuneraria() {
   }
 }
 
+function button_SaveSepultamento() {
+  var btnSalvarSepultamento = document.querySelector('#btn_SaveSepultamento')
+
+  btnSalvarSepultamento.onclick = function () {
+    validaCadSepultamento();
+    if (validaCadSepultamento() == true) {
+      if (populaCodCadastros() == true) {
+        alteraCadSepultamento()
+      } else {
+        sendCadSepultamento()
+      }
+    }
+
+  }
+}
+
+
+
+function button_DeleteCemiterio() {
+  var btnDeleteCemiterio = document.querySelector('#btn_DeleteCemiterio')
+
+  btnDeleteCemiterio.onclick = function () {
+    
+    if (confirmExclusao() == true) {
+      deleteCadCemiterio()
+      window.history.back()
+    }else{
+
+    }
+  }
+}
+
+function button_DeleteFalecido() {
+  var btnDeleteFalecido = document.querySelector('#btn_DeleteFalecido')
+
+  btnDeleteFalecido.onclick = function () {
+    
+    if (confirmExclusao() == true) {
+      deleteCadFalecido()
+      window.history.back()
+    }else{
+
+    }
+  }
+}
+
+function button_DeleteFuneraria() {
+  var btnDeleteFuneraria = document.querySelector('#btn_DeleteFuneraria')
+
+  btnDeleteFuneraria.onclick = function () {
+    
+    if (confirmExclusao() == true) {
+      deleteCadFuneraria()
+      window.history.back()
+    }else{
+
+    }
+  }
+}
+
+function button_DeleteSepultura() {
+  var btnDeleteSepultura = document.querySelector('#btn_DeleteSepultura')
+
+  btnDeleteSepultura.onclick = function () {
+    
+    if (confirmExclusao() == true) {
+      deleteCadSepultura()
+      window.history.back()
+    }else{
+
+    }
+  }
+}
+
+function button_DeleteSepultamento() {
+  var btnDeleteSepultamento = document.querySelector('#btn_DeleteSepultamento')
+
+  btnDeleteSepultamento.onclick = function () {
+    
+    if (confirmExclusao() == true) {
+      deleteCadSepultamento()
+      window.history.back()
+    }else{
+
+    }
+  }
+}
 
 /* ------------------------------POPULA DADOS PARA ALTERACAO ------------------------------ */
 
@@ -1047,6 +1271,38 @@ function dados_Funerarias(cod) {
     }
   })
 }
+
+function dados_Sepultamentos(cod) {
+
+  const consolidaDados = {
+    sepulcodigo: cod
+  }
+
+
+  fetch('http://localhost:8081/sepulCod', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(consolidaDados)
+
+  }).then(response => {
+    return response.json(); 
+  }).then(data => {
+    for (i = 0; i < data.length; i++) {
+
+      document.getElementById("cod_Sepultamento").value = data[i].sepulcodigo
+      document.getElementById("name_Pessoa").value = data[i].sepulfalecido
+      document.getElementById("cpf_Pessoa").value = data[i].sepulcpffal
+      document.getElementById("name_Funeraria").value = data[i].sepulfuneraria
+      document.getElementById("date_Sepultamento").value = formataDataInverso(data[i].sepdatasepultamento) 
+      document.getElementById("date_Falecimento").value = formataDataInverso(data[i].sepdatafalecimento)
+      document.getElementById("name_Cemiterio").value = data[i].sepulcemiterio
+      document.getElementById("name_Sepultura").value = data[i].sepulsepultura
+
+    }
+  })
+}
 /* ------------------------------FUNCAO COLETA IDS DA TABLE ------------------------------ */
 
 
@@ -1079,6 +1335,8 @@ function mudaTela(id) {
     window.location.href = (`/pages/cad_Falecido.html?id=${id}`)
   }else if (location.pathname == '/pages/filter_Funeraria.html') {
     window.location.href = (`/pages/cad_Funeraria.html?id=${id}`)
+  }else if (location.pathname == '/pages/filter_Sepultamento.html') {
+    window.location.href = (`/pages/cad_Sepultamento.html?id=${id}`)
   }
 }
 
@@ -1096,6 +1354,8 @@ function urlParametros() {
       dados_Falecidos(idParam)
     }else if (location.pathname == '/pages/cad_Funeraria.html') {
       dados_Funerarias(idParam)
+    }else if (location.pathname == '/pages/cad_Sepultamento.html') {
+      dados_Sepultamentos(idParam)
     }
 
     return true
@@ -1164,4 +1424,12 @@ function populaCodCadastros() {
       populaCodSepultamentos()
     }
   }
+}
+
+/* ------------------------------FUNCAO ALERT EXCLUSAO ------------------------------ */
+
+
+function confirmExclusao(){
+  var resultado = confirm('Deseja realmente excluir?')
+  return resultado
 }

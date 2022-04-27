@@ -25,7 +25,7 @@ app.get('/status', function(req,res){
 }) /* Criando a rota Status e colocando uma funcao de callback que Responde o status do banco */
 
 /* ------------------------------ROTA CEMITERIO------------------------------------------------ */
-app.get('/',async function(req,res){
+app.get('/und',async function(req,res){
   const busca_Unidades = await querys_Cemiterio.findUnidades();
   res.status(200).send(busca_Unidades)
 }) /* Criando uma rota que busca os dados de unidades do banco */
@@ -41,7 +41,7 @@ app.post('/cod',async function(req,res){
   res.status(200).send(busca_Unidades)
 }) /* Criando uma rota que busca os dados especifico de unidades do banco */
 
-app.post('/insert',async function(req,res){
+app.post('/insertUnd',async function(req,res){
   const dados =req.body
   await querys_Cemiterio.insert_Unidades(dados)
   res.status(200).send('Inserido com sucesso' )
@@ -59,7 +59,12 @@ app.put('/updateUnd',async function(req,res){
   res.status(200).send('alterado com sucesso' )
   
 })
-
+app.delete('/deleteUnd',async function(req,res){
+  const dados =req.body
+  await querys_Cemiterio.delete_Unidades(dados)
+  res.status(200).send('deletado com sucesso' )
+  
+})
 
 /* ------------------------------ROTA FALECIDOS------------------------------------------------ */
 app.get('/fal',async function(req,res){
@@ -96,6 +101,13 @@ app.put('/updateFal',async function(req,res){
   res.status(200).send('alterado com sucesso' )
   
 })
+
+app.delete('/deleteFal',async function(req,res){
+  const dados =req.body
+  await querys_Falecidos.delete_Falecidos(dados)
+  res.status(200).send('deletado com sucesso' )
+  
+})
 /* ------------------------------ROTA SEPULTURAS------------------------------------------------ */
 app.get('/sep',async function(req,res){
   const busca_sepulturas = await querys_Sepulturas.findSepulturas();
@@ -124,6 +136,13 @@ app.put('/updateSep',async function(req,res){
   const dados =req.body
   await querys_Sepulturas.altera_Sepultura(dados)
   res.status(200).send('alterado com sucesso' )
+  
+})
+
+app.delete('/deleteSep',async function(req,res){
+  const dados =req.body
+  await querys_Sepulturas.delete_Sepulturas(dados)
+  res.status(200).send('deletado com sucesso' )
   
 })
 /* ------------------------------ROTA FUNERARIAS------------------------------------------------ */
@@ -161,6 +180,12 @@ app.put('/updateFun',async function(req,res){
   res.status(200).send('alterado com sucesso' )
   
 })
+app.delete('/deleteFun',async function(req,res){
+  const dados =req.body
+  await querys_Funerarias.delete_Funerarias(dados)
+  res.status(200).send('deletado com sucesso' )
+  
+})
 
 /* ------------------------------ROTA SEPULTAMENTO---------------------------------------------- */
 app.get('/sepul',async function(req,res){
@@ -180,6 +205,26 @@ app.get('/populaCodigoSepul',async function(req,res){
   const pop_Cod = await querys_Codigos.codSepultamentos();
   res.status(200).send(pop_Cod)
 }) 
+
+app.post('/sepulCod',async function(req,res){
+  const sepulcod = req.body
+  const busca_Fun = await querys_Sepultamentos.findSepultamentosCod(sepulcod);
+  res.status(200).send(busca_Fun)
+})
+
+app.put('/updateSepul',async function(req,res){
+  const dados =req.body
+  await querys_Sepultamentos.altera_Sepultamentos(dados)
+  res.status(200).send('alterado com sucesso' )
+  
+})
+
+app.delete('/deleteSepul',async function(req,res){
+  const dados =req.body
+  await querys_Sepultamentos.delete_Sepultamentos(dados)
+  res.status(200).send('deletado com sucesso' )
+  
+})
 /* -------------------------------------------------------------------------------------------- */
 app.listen(8081, function(){
     console.log('Servidor rodando na url http://localhost:8081')

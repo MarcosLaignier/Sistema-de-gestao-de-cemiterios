@@ -33,6 +33,12 @@ class querysSepulturas{
         return await conexaoDB.query(sql,values)
         
     }
+    async delete_Sepulturas(modelSep){
+        const sql = `delete from SGCSEPULTURAS where sepCodigo = $1`
+        const values = [modelSep.sepcodigo] 
+        return await conexaoDB.query(sql,values)
+        
+    }
 }
 
 

@@ -12,7 +12,7 @@ class querysFunerarias{
     }
 
     async findFunerariasNome(){
-        const sql = `select fundescricao from SGCFUNERARIAS;` 
+        const sql = `select fundescricao from SGCFUNERARIAS order by funcodigo;` 
         const result = await conexaoDB.query(sql);  
         const rows = result.rows;
         return rows || []; 
@@ -38,6 +38,13 @@ class querysFunerarias{
     async altera_Funerarias(modelFun){
         const sql = `update SGCFUNERARIAS set fundescricao = $1, funcidade = $2 , funendereco = $3 ,funnumero = $4  where funcodigo = $5`
         const values = [ modelFun.fundescricao , modelFun.funcidade , modelFun.funendereco,modelFun.funnumero,modelFun.funcodigo]
+        return await conexaoDB.query(sql,values)
+        
+    }
+
+    async delete_Funerarias(modelFun){
+        const sql = `delete from SGCFUNERARIAS where funcodigo = $1`
+        const values = [modelFun.funcodigo] 
         return await conexaoDB.query(sql,values)
         
     }

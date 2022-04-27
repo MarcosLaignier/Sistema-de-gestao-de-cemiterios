@@ -41,7 +41,18 @@ class querysCemiterio{
         return await conexaoDB.query(sql,values)
         
     }
+
+    async delete_Unidades(Form){
+        const sql = `delete from SGCUNIDADES where undcodigo = $1`
+        const values = [Form.undcodigo] 
+        return await conexaoDB.query(sql,values)
+        
+    }
 }
+
+
+
+
 
 
 

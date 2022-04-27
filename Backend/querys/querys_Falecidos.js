@@ -45,6 +45,13 @@ class querysFalecidos{
         
     }
 
+
+    async delete_Falecidos(modelFal){
+        const sql = `delete from SGCFALECIDOS where falcodigo = $1`
+        const values = [modelFal.falcodigo] 
+        return await conexaoDB.query(sql,values)
+        
+    }
 }
 
 export default new querysFalecidos();
