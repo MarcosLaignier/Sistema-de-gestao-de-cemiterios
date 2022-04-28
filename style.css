@@ -73,7 +73,7 @@ header{
     position: relative;
     left: 70px;
 max-width: 100%;
-width: (100% - 70px);
+width: CALC(100% - 70px);
 }
 
 #resultados{

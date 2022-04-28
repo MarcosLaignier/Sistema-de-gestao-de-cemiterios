@@ -1173,7 +1173,7 @@ function dados_Cemiterio(cod) {
       document.getElementById("endereco_Cemiterio").value = data[i].undendereco
       document.getElementById("number_Cemiterio").value = data[i].undnumero
       document.getElementById("city_Cemiterio").value = data[i].undcidade
-      document.getElementById("state_Cemiterio").value = data[i].undestado
+      document.getElementById("state_Cemiterio").value = popSelect('state_Cemiterio',data[i].undestado) 
       document.getElementById("responsavel_Cemiterio").value = data[i].undresponsavel
 
 
@@ -1202,7 +1202,7 @@ function dados_Sepulturas(cod) {
 
       document.getElementById("cod_Sepultura").value = data[i].sepcodigo
       document.getElementById("desc_Sepultura").value = data[i].sepdescricao
-      document.getElementById("name_Cemiterio").value = data[i].sepcemiterio
+      document.getElementById("name_Cemiterio").value = popSelect('name_Cemiterio',data[i].sepcemiterio) 
 
 
 
@@ -1290,14 +1290,22 @@ function dados_Sepultamentos(cod) {
     return response.json(); 
   }).then(data => {
     for (i = 0; i < data.length; i++) {
+      
+      /* var select = document.getElementById('name_Cemiterio')
+      var option = document.createElement('option');
+      var textOpt = document.createTextNode(data[i].sepulcemiterio);
+      select.appendChild(option)
+      option.appendChild(textOpt) */
+      /* popSelect(name_Cemiterio,data[i].sepulcemiterio) */
+      
 
       document.getElementById("cod_Sepultamento").value = data[i].sepulcodigo
       document.getElementById("name_Pessoa").value = data[i].sepulfalecido
       document.getElementById("cpf_Pessoa").value = data[i].sepulcpffal
-      document.getElementById("name_Funeraria").value = data[i].sepulfuneraria
+      document.getElementById("name_Funeraria").value = popSelect('name_Funeraria',data[i].sepulfuneraria)
       document.getElementById("date_Sepultamento").value = formataDataInverso(data[i].sepdatasepultamento) 
       document.getElementById("date_Falecimento").value = formataDataInverso(data[i].sepdatafalecimento)
-      document.getElementById("name_Cemiterio").value = data[i].sepulcemiterio
+      document.getElementById("name_Cemiterio").value =  popSelect('name_Cemiterio',data[i].sepulcemiterio)
       document.getElementById("name_Sepultura").value = data[i].sepulsepultura
 
     }
@@ -1432,4 +1440,16 @@ function populaCodCadastros() {
 function confirmExclusao(){
   var resultado = confirm('Deseja realmente excluir?')
   return resultado
+}
+/* ------------------------------FUNCAO POPULA SELECT HTML DO BANCO ------------------------------ */
+
+
+function popSelect(idElementSelect,dadoPop){
+      
+  var select = document.getElementById(idElementSelect)
+  var option = document.createElement('option');
+  var textOpt = document.createTextNode(dadoPop);
+  select.appendChild(option)
+  option.appendChild(textOpt)
+  return option.value
 }
